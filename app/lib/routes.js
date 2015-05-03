@@ -10,3 +10,11 @@ Router.route('/', {
   action: 'action',
   where: 'client'
 });
+
+
+Router.route('publish', {
+  name: 'publish',
+  controller: 'PublishController',
+  action: 'action',
+  where: 'client'
+});

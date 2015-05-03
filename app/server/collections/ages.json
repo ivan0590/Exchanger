@@ -1,0 +1,57 @@
+//mongoimport --host 127.0.0.1:3001 --db meteor --collection ages --type json --file /home/ivan/exchanger/app/server/collections/ages.json -jsonArray
+[
+    {
+        _id: ObjectId("553d316be530eeeaa4e038d7"),
+        name: "Less than a month",
+        i18n: {
+            es: {
+                name: "Menos de un mes"
+            }
+        }
+    },
+    {
+        _id: ObjectId("553d316be530eeeaa4e038d8"),
+        name: "Between one and three months",
+        i18n: {
+            es: {
+                name: "Entre uno y tres meses"
+            }
+        }
+    },
+    {
+        _id: ObjectId("553d316be530eeeaa4e038d9"),
+        name: "Between three and six months",
+        i18n: {
+            es: {
+                name: "Entre tres y seis meses"
+            }
+        }
+    },
+    {
+        _id: ObjectId("553d316be530eeeaa4e038da"),
+        name: "Between one and two years",
+        i18n: {
+            es: {
+                name: "Entre uno y dos años"
+            }
+        }
+    },
+    {
+        _id: ObjectId("553d316be530eeeaa4e038db"),
+        name: "Between two and five years",
+        i18n: {
+            es: {
+                name: "Entre dos y cinco años"
+            }
+        }
+    },
+    {
+        _id: ObjectId("553d316be530eeeaa4e038dc"),
+        name: "More than five years",
+        i18n: {
+            es: {
+                name: "Más de cinco años"
+            }
+        }
+    }
+]

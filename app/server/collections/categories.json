@@ -1,0 +1,120 @@
+//mongoimport --host 127.0.0.1:3001 --db meteor --collection categories --type json --file /home/ivan/exchanger/app/server/collections/categories.json -jsonArray
+[
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038ca"),
+		name: "Electronics",
+		i18n: {
+			es: {
+				name: "Electrónica"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038cb"),
+		name: "Computing",
+		i18n: {
+			es: {
+				name: "Informática"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038cc"),
+		name: "Automotive",
+		i18n: {
+			es: {
+				name: "Automoción"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038cd"),
+		name: "Sports and outdoors",
+		i18n: {
+			es: {
+				name: "Deportes y aire libre"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038ce"),
+		name: "Home",
+		i18n: {
+			es: {
+				name: "Hogar"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038cf"),
+		name: "Videogames and apps",
+		i18n: {
+			es: {
+				name: "Videojuegos y aplicaciones"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038d0"),
+		name: "Movies",
+		i18n: {
+			es: {
+				name: "Películas"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038d1"),
+		name: "Music",
+		i18n: {
+			es: {
+				name: "Música"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038d2"),
+		name: "Books",
+		i18n: {
+			es: {
+				name: "Libros"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038d3"),
+		name: "Cloths and accessories",
+		i18n: {
+			es: {
+				name: "Ropa y accesorios"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038d4"),
+		name: "Cosmetic",
+		i18n: {
+			es: {
+				name: "Cosmética"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038d5"),
+		name: "Children",
+		i18n: {
+			es: {
+				name: "Niños"
+			}
+		}
+	},
+	{
+		_id: ObjectId("553d27cae530eeeaa4e038d6"),
+		name: "Others",
+		i18n: {
+			es: {
+				name: "Otros"
+			}
+		}
+	}
+]

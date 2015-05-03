@@ -1,0 +1,66 @@
+<template name="Publish">
+
+    <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 well">
+        <form action="#" method="POST" class="form-horizontal">
+            <fieldset>
+                <legend>{{_ "publish_title"}}</legend>
+
+                <div  class="col-md-12 col-lg-12">
+                    <div  class="form-group">
+                        <input type="text" name="name" placeholder="{{_ "name"}}" class="form-control" />
+                    </div>
+
+                    <div  class="form-group">
+                        <textarea type="text" name="description" placeholder="{{_ "description"}}" class="form-control" ></textarea>
+                    </div>
+
+                    <div  class="form-group">
+                        <input type="number" min="0" name="price" placeholder="{{_ "price"}}" class="form-control" />
+                    </div>
+
+                    <div  class="form-group">
+                        <select name="category" class="form-control" >
+                            <option value="" selected disabled class="text-muted">{{_ "category"}}</option>
+                            {{#each categories}}
+                                <option value="{{_id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div  class="form-group">
+                        <select name="age" class="form-control" >
+                            <option value="" selected disabled class="text-muted">{{_ "age"}}</option>
+                            {{#each ages}}
+                                <option value="{{_id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div  class="form-group">
+                        {{> customUpload accept=".jpg, .jpeg, .png" collection=1 }}
+                    </div>
+                </div>
+
+                <div  class="form-group">
+                    <button type="submit" id="add_publication" class="btn btn-success center-block">{{_ "publish"}}</button>
+                </div>
+            </fieldset>
+        </form>
+
+
+
+
+
+
+
+
+        
+        
+    <!-- {{#each publications}}
+        <div>
+            <h2>Probando</h2>
+            <img src="{{ photo.url store='images_publications'}}" alt="NO VA">
+        </div>
+    {{/each}} -->
+    </div>
+</template>

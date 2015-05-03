@@ -1,0 +1,14 @@
+{
+    "search": "Search",
+    "publish": "Publish",
+    "editProfile": "Edit profile",
+    
+    "publish_title": "Publish new product",
+    
+    "name": "Name",
+    "description": "Description",
+    "category": "Category",
+    "age": "Age",
+    "price": "Price",
+    "photo": "Photo"
+}
