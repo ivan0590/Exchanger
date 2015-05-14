@@ -1,0 +1,42 @@
+<template name="Publication">
+
+    <div class="ms-item col-md-4 col-lg-4" data-item-createdAt="{{createdAt}}">
+        <div class="well clearfix">
+            
+            <h4 class="break-word">
+                <a href="#" id="name">
+                    {{name}}
+                </a>
+            </h4>
+
+            {{#with getPhoto photo}}
+                <a href="#">
+                    <img src="{{url store='images_publications'}}" alt="NO VA" class="img-responsive img-thumbnail" />
+                </a>
+            {{/with}}
+
+            {{#with getCategory category}}
+                <h5 class="col-md-8 col-lg-8 break-word">
+                    <a href="#">
+                        {{name}}
+                    </a>
+                </h5>
+            {{/with}}
+                
+            <h4 class="col-md-4 col-lg-4 text-right"> {{price}} €</h4>
+
+            <div>
+                <div class="col-md-12 col-lg-12">
+                    {{#with getUser owner}}
+                        {{#with profile}}
+                            <a href="#" class="break-word">
+                                {{ [first-name] }} {{ [last-name] }}
+                            </a>
+                        {{/with}} 
+                    {{/with}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

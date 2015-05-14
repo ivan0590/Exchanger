@@ -2,13 +2,111 @@
     "search": "Buscar",
     "publish": "Publicar",
     "editProfile": "Editar perfil",
-    
+
     "publish_title": "Publicar un nuevo producto",
-    
+
     "name": "Nombre",
     "description": "Descripción",
     "category": "Categoría",
     "age": "Antigüedad",
     "price": "Precio",
-    "photo": "Foto"
+    "photo": "Foto",
+    "date": "Fecha",
+
+
+    "schemas": {
+        
+        "publications": {
+
+            "name": {
+                "label": "Nombre",
+                "placeholder": "Nombre"
+            },
+            "description": {
+                "label": "Descripción",
+                "placeholder": "Descripción"
+            },
+            "price": {
+                "label": "Precio",
+                "placeholder": "Precio"
+            },
+            "category": {
+                "label": "Categoría",
+                "placeholder": "Categoría"
+            },
+            "age": {
+                "label": "Antigüedad",
+                "placeholder": "Antigüedad"
+            },
+            "photo": {
+                "label": "Foto",
+                "placeholder": "Foto"
+            }
+        }
+    },
+
+    "simpleschema": {
+        "messages": {
+            "required": "El campo [label] es obligatorio",
+            "minString": "El campo [label] debe tener al menos [min] caracteres",
+            "maxString": "El campo [label] debe tener como máximo [max] caracteres",
+            "minNumber": "El valor mínimo del campo [label] es [min]",
+            "maxNumber": "El valor máximo del campo [label] es [max]",
+            "minDate": "El campo [label] ha de ser una fecha igual o posterior al [min]",
+            "maxDate": "El campo [label] ha de ser una fecha anterior al [max]",
+            "badDate": "El campo [label] no es una fecha válida",
+            "minCount": "Han de haber al menos [minCount] valores",
+            "maxCount": "Han de haber como mucho [maxCount] valores",
+            "noDecimal": "El campo [label] ha de ser un número entero",
+            "notAllowed": "[value] no es un valor permitido",
+            "expectedString": "El campo [label] ha de ser una cadena de texto",
+            "expectedNumber": "El campo [label] ha de ser un número",
+            "expectedBoolean": "El campo [label] ha de ser un valor booleano",
+            "expectedArray": "El campo [label] ha de ser un array",
+            "expectedObject": "El campo [label] ha de ser un objeto",
+            "expectedConstructor": "El campo [label] ha de ser de tipo [type]",
+            "keyNotInSchema": "[key] no está permitido en el esquema",
+            "regEx": {
+                "0": {
+                    "msg": "[label] falló la validación por Expresión Regular (Regex)"
+                },
+                "1": {
+                    "exp": "SimpleSchema.RegEx.Email",
+                    "msg": "[label] tiene que ser una direccion de correo electronico válida"
+                },
+                "2": {
+                    "exp": "SimpleSchema.RegEx.WeakEmail",
+                    "msg": "[label] tiene que ser una direccion de correo electronico válida"
+                },
+                "3": {
+                    "exp": "SimpleSchema.RegEx.Domain",
+                    "msg": "[label] tiene que ser un nombre de dominio válido"
+                },
+                "4": {
+                    "exp": "SimpleSchema.RegEx.WeakDomain",
+                    "msg": "[label] tiene que ser un nombre de dominio válido"
+                },
+                "5": {
+                    "exp": "SimpleSchema.RegEx.IP",
+                    "msg": "[label] tiene que ser una dirreción de IPv4 o IPv6 válida"
+                },
+                "6": {
+                    "exp": "SimpleSchema.RegEx.IPv4",
+                    "msg": "[label] tiene que ser una dirreción de IPv4 válida"
+                },
+                "7": {
+                    "exp": "SimpleSchema.RegEx.IPv6",
+                    "msg": "[label] tiene que ser una dirreción de IPv6 válida"
+                },
+                "8": {
+                    "exp": "SimpleSchema.RegEx.Url",
+                    "msg": "[label] tiene que ser una URL válida"
+                },
+                "9": {
+                    "exp": "SimpleSchema.RegEx.Id",
+                    "msg": "[label] tiene que ser un ID alfanumerico"
+                }
+            }
+        }
+    }
 }

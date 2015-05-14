@@ -1,3 +1,5 @@
 <template name="Home">
-  <h1>Find me in app/client/templates/home/home</h1>
+    <div class="col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2">
+        {{> InfiniteScroll collection="publications" itemTemplate="Publication" }}
+    </div>
 </template>

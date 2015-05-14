@@ -1,3 +1,9 @@
+Meteor.startup(function () {
+    TAPi18n.setLanguage("en");
+});
+
+accountsUIBootstrap3.setLanguage(TAPi18n.getLanguage()); 
+
 /*****************************************************************************/
 /* MasterLayout: Event Handlers */
 /*****************************************************************************/
@@ -11,10 +17,11 @@ Template.MasterLayout.helpers({
 });
 
 
+
 //Ocultar el botón de cambiar contraseña
-Template._loginButtonsAdditionalLoggedInDropdownActions.rendered = function(){
+Template._loginButtonsAdditionalLoggedInDropdownActions.onRendered(function(){
     $("#login-buttons-open-change-password").hide();
-};
+});
 
 
 //Configuración de la interfaz de login
@@ -49,4 +56,20 @@ Accounts.ui.config({
             return !!value;
         }
     }]
+});
+
+Template.registerHelper("getCategory", function (id){
+    return Categories.findOne(new Mongo.ObjectID(id));
+});
+
+Template.registerHelper("getAge", function (id){
+    return Ages.findOne(new Mongo.ObjectID(id));
+});
+
+Template.registerHelper("getPhoto", function (id){
+    return new FS.File(ImagesPublications.findOne({_id: id}));
+});
+
+Template.registerHelper("getUser", function (id){
+    return Meteor.users.findOne({_id: id});
 });

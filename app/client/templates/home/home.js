@@ -1,4 +1,11 @@
 /*****************************************************************************/
+/* Subscriptions */
+/*****************************************************************************/
+TAPi18n.subscribe("categories");
+TAPi18n.subscribe("ages");
+Meteor.subscribe("images_publications");
+
+/*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.Home.events({
@@ -10,14 +17,15 @@ Template.Home.events({
 Template.Home.helpers({
 });
 
+
 /*****************************************************************************/
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Home.created = function () {
-};
+Template.Home.onCreated(function () {
+});
 
-Template.Home.rendered = function () {
-};
+Template.Home.onRendered(function() {
+});
 
-Template.Home.destroyed = function () {
-};
+Template.Home.onDestroyed(function () {
+});

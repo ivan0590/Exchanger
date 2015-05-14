@@ -11,16 +11,16 @@ Meteor.subscribe("publications");
 Template.Publish.events({
 	"click #add_publication": function(event){
 
-		var publication = 
-		{
+        var publication = 
+        {
 			name: $('[name="name"]').val(),
 			description: $('[name="description"]').val(),
 			price: $('[name="price"]').val(),
-			category: $('[name="category"]').val().replace('ObjectID("', 'ObjectId("'),
+			category: $('[name="category"]').val(),
 			age: $('[name="age"]').val(),
-			photo: UI._globalHelpers.uploadedFileId()
+			photo: UI._globalHelpers.uploadedFileId ? UI._globalHelpers.uploadedFileId() : ""
 		}
-
+        
 		Meteor.call('addPublication', publication);
 	}
 });
@@ -30,54 +30,53 @@ Template.Publish.events({
 /*****************************************************************************/
 Template.Publish.helpers({
 	categories: function() {
-        return Categories.find();
+		
+        return Categories.find().map(function (element){
+			return {label: element.name, value: element._id._str};
+		});
+
     },
     ages: function() {
-        return Ages.find();
+
+        return Ages.find().map(function (element){
+			return {label: element.name, value: element._id._str};
+		});
+
+    },
+    allowedCategories: function() {
+
+        return Categories.find().map(function (element){
+			return element._id._str;
+		});
+
+    },
+    allowedAges: function() {
+
+        return Ages.find().map(function (element){
+			return element._id._str;
+		});
+
     }
-
-
-
-
-
-
-
-
-
-    
- //    ,
-	// publications: function () {
-
-	// 	var publications = Publications.find().map(function(element){
-
-	// 		element.photo = new FS.File(ImagesPublications.findOne({_id: element.photo}));
-
-	// 		return element;
-			
-	// 	});
-
-	// 	return publications;
-	// }
 });
 
 
 /*****************************************************************************/
 /* Publish: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Publish.created = function () {
-};
+Template.Publish.onCreated(function () {
+});
 
-Template.Publish.rendered = function () {
-};
+Template.Publish.onRendered(function () {
+});
 
-Template.Publish.destroyed = function () {
-};
+Template.Publish.onDestroyed(function () {
+});
 
 
 /*****************************************************************************/
 /* Upload template button label */
 /*****************************************************************************/
-Template.customUpload.helpers({
+Template.CustomUpload.helpers({
 	buttonText: function(){
 		return TAPi18n.__("photo");
 	}

@@ -1,6 +1,8 @@
-<template name="customUpload">
+<template name="CustomUpload">
     
-    <input type="file"
+    <input name="{{ name }}"
+           data-schema-key="{{ name }}"
+           type="file"
            id="fileInput"
            accept="{{ accept }}"
            data-buttonBefore="true"

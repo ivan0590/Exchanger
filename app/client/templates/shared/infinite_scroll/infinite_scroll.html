@@ -1,0 +1,7 @@
+<template name="InfiniteScroll">
+	<div id="container">
+        {{#each collection}}
+            {{> Template.dynamic template=itemTemplate}}
+        {{/each}}
+    </div>
+</template>

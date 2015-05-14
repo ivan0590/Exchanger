@@ -1,6 +1,7 @@
-Template.customUpload.events({
+Template.CustomUpload.events({
     'change #fileInput': function (event) {
 
+        //Si hay un archivo cargado
         if(event.target.files[0]){
         	
 		    var file = new FS.File(event.target.files[0]);
@@ -27,10 +28,16 @@ Template.customUpload.events({
 	        Template.registerHelper("uploadedFileId", function (){
 	        	return uploadedFile._id;
 	        });
+
+        } else {
+
+            Template.registerHelper("uploadedFileId", function (){
+                return null;
+            });
         }
     }
 });
 
-Template.customUpload.rendered = function () {
+Template.CustomUpload.onRendered(function () {
 	$.getScript("http://markusslima.github.io/bootstrap-filestyle/js/bootstrap-filestyle.min.js");
-};
+});
