@@ -2,17 +2,39 @@
     "search": "Search",
     "publish": "Publish",
     "editProfile": "Edit profile",
+    "firstName": "First Name",
+    "lastName": "Last Name",
 
-    "publish_title": "Publish new product",
+    "filter": "Filter",
+    "orderBy": "Order by",
+    "ascending": "Ascending",
+    "descending": "Descending",
+
+    "title_createPublication": "Publish new product",
+    "title_editPublication": "Edit a publicación",
 
     "name": "Name",
     "description": "Description",
+    "status": "Status",
     "category": "Category",
     "age": "Age",
     "price": "Price",
     "photo": "Photo",
     "date": "Date",
+    "seller": "Seller",
 
+    "status_onSale": "On sale",
+    "status_waiting": "Waiting to be sold",
+    "status_sold": "Sold",
+
+    "button_acceptOffer": "Accept offer",
+    "button_bargainOffer": "Bargain offer",
+    "button_chat": "Chat with %s %s",
+    "button_createPublication": "Create publication",
+    "button_editPublication": "Edit publication",
+    "button_removePublication": "Remove publication",
+
+    "message_removePublication": "Do you really want to remove this publication?",
 
     "schemas": {
 
@@ -29,6 +51,10 @@
             "price": {
                 "label": "Price",
                 "placeholder": "Price"
+            },
+            "status": {
+                "label": "Status",
+                "placeholder": "Status"
             },
             "category": {
                 "label": "Category",

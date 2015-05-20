@@ -1,8 +1,7 @@
-
 <template name="MasterLayout">
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
+        
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -13,7 +12,6 @@
                 <a class="navbar-brand" href="/">Exchanger</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="header-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -27,16 +25,16 @@
                             </div>
                         </form>
                     </li>
-                    <li><a href="/publish">{{_ "publish"}}</a></li>
+                    <li><a href="/create_publication">{{_ "publish"}}</a></li>
                     <ul class="nav navbar-nav navbar-right">
                         {{> loginButtons}}
                     </ul>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </nav>
     {{> yield}}
-
+    <div class="clearfix"></div>
 </template>
 <template name="_loginButtonsAdditionalLoggedInDropdownActions">
     <button class="btn btn-default btn-block" id="login-buttons-edit-profile">{{_ "editProfile"}}</button>

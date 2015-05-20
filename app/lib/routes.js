@@ -12,9 +12,23 @@ Router.route('/', {
 });
 
 
-Router.route('publish', {
-  name: 'publish',
-  controller: 'PublishController',
-  action: 'action',
+Router.route('create_publication', {
+  name: 'create_publication',
+  controller: 'PublicationController',
+  action: 'create',
+  where: 'client'
+});
+
+Router.route('publication/:_id/edit', {
+  name: 'edit_publication',
+  controller: 'PublicationController',
+  action: 'edit',
+  where: 'client'
+});
+
+Router.route('publication/:_id', {
+  name: 'show_publication',
+  controller: 'PublicationController',
+  action: 'show',
   where: 'client'
 });

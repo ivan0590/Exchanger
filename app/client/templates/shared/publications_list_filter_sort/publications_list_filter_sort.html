@@ -1,0 +1,57 @@
+<template name="PublicationsListFilterSort">
+    
+    <!-- Sort -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{_ "orderBy"}}</h4>
+        </div>
+        <div class="panel-body">
+            
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <input type="radio" value="name" name="sort">
+                </span>
+                <p class="form-control">{{_ "name"}}</p>
+            </div>
+                    
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <input type="radio" value="price" name="sort">
+                </span>
+                <p class="form-control">{{_ "price"}}</p>
+            </div>
+                    
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <input type="radio" value="createdAt" name="sort">
+                </span>
+                <p class="form-control">{{_ "date"}}</p>
+            </div>
+
+            
+        </div>
+        <div class="panel-footer clearfix">
+            <button type="button" id="order" class="btn btn-default col-md-12 col-lg-12">
+                <h5 data-label="ascending">{{_ "ascending"}}</h5>
+            </button>
+        </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>{{_ "filter"}}</h4>
+        </div>
+        <div class="panel-body">
+            <h5>{{_ "category"}}</h5>
+            <ul class="list-unstyled">
+                {{#each categories}}
+                    <li>
+                        <input type="checkbox" value="{{_id._str}}" class="category col-md-1 col-lg-1" />
+                        <span class="col-md-11 col-lg-11">{{name}}</span>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</template>

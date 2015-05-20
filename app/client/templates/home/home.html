@@ -1,5 +1,12 @@
 <template name="Home">
-    <div class="col-md-10 col-lg-10 col-md-offset-2 col-lg-offset-2">
-        {{> InfiniteScroll collection="publications" itemTemplate="Publication" }}
+    
+    <div class="col-md-2 col-lg-2 row">
+        {{> PublicationsListFilterSort}}
     </div>
+
+    <div class="col-md-10 col-lg-10" id="container">
+        <!-- {{> InfiniteScroll collection="publications" itemTemplate="Publication" }} -->
+        {{> PublicationsList}}
+    </div>
+    
 </template>

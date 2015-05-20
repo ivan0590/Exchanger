@@ -2,17 +2,39 @@
     "search": "Buscar",
     "publish": "Publicar",
     "editProfile": "Editar perfil",
+    "firstName": "Nombre",
+    "lastName": "Apellidos",
 
-    "publish_title": "Publicar un nuevo producto",
+    "filter": "Filtro",
+    "orderBy": "Ordenar por",
+    "ascending": "Ascendentemente",
+    "descending": "Descendentemente",
+
+    "title_createPublication": "Publicar un nuevo producto",
+    "title_editPublication": "Editar una publicación",
 
     "name": "Nombre",
     "description": "Descripción",
+    "status": "Estado",
     "category": "Categoría",
     "age": "Antigüedad",
     "price": "Precio",
     "photo": "Foto",
     "date": "Fecha",
+    "seller": "Vendedor",
 
+    "status_onSale": "En venta",
+    "status_waiting": "En espera de ser vendido",
+    "status_sold": "Vendido",
+
+    "button_acceptOffer": "Aceptar oferta",
+    "button_bargainOffer": "Regatear oferta",
+    "button_chat": "Chatear con %s %s",
+    "button_createPublication": "Crear publicación",
+    "button_editPublication": "Editar publicación",
+    "button_removePublication": "Borrar publicación",
+
+    "message_removePublication": "¿De verdad deseas borrar esta publicación?",
 
     "schemas": {
         
@@ -29,6 +51,10 @@
             "price": {
                 "label": "Precio",
                 "placeholder": "Precio"
+            },
+            "status": {
+                "label": "Estado",
+                "placeholder": "Estado"
             },
             "category": {
                 "label": "Categoría",

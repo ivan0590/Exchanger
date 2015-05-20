@@ -1,0 +1,72 @@
+<template name="CreatePublication">
+
+    <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 well">
+        {{#autoForm collection="Publications" id="insertPublicationForm" type="method" meteormethod="createPublication" }}
+            <fieldset>
+                <legend><div class="text-center">{{_ "title_createPublication"}}</div></legend>
+
+                <div  class="col-md-12 col-lg-12">
+                    <div  class="form-group">
+                        {{> afFieldInput name='name' }}
+                        {{#if afFieldIsInvalid name='name'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='name'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+                        {{> afFieldInput name='description' type="textarea" }}
+                        {{#if afFieldIsInvalid name='description'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='description'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+                        {{> afFieldInput name='price' }}
+                        {{#if afFieldIsInvalid name='price'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='price'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+                        {{> afFieldInput name='category' type="select" options=categories allowedValues=allowedCategories }}
+                        {{#if afFieldIsInvalid name='category'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='category'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+                        {{> afFieldInput name='age' type="select" options=ages allowedValues=allowedAges  }}
+                        {{#if afFieldIsInvalid name='age'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='age'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+                        {{> CustomUpload name="photo" accept=".jpg, .jpeg, .png" collection=1 }}
+                        {{#if afFieldIsInvalid name='photo'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='photo'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    {{> afFieldInput name='status' type="hidden" value=0 }}
+                </div>
+
+                <div  class="form-group">
+                    <button type="submit" id="create_publication" class="btn btn-success center-block">{{_ "button_createPublication"}}</button>
+                </div>
+            </fieldset>
+        {{/autoForm}}
+    </div>
+</template>

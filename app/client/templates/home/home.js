@@ -3,18 +3,21 @@
 /*****************************************************************************/
 TAPi18n.subscribe("categories");
 TAPi18n.subscribe("ages");
+Meteor.subscribe("publications");
 Meteor.subscribe("images_publications");
 
 /*****************************************************************************/
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.Home.events({
+
 });
 
 /*****************************************************************************/
 /* Home: Helpers */
 /*****************************************************************************/
 Template.Home.helpers({
+
 });
 
 
@@ -22,6 +25,7 @@ Template.Home.helpers({
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Home.onCreated(function () {
+    
 });
 
 Template.Home.onRendered(function() {

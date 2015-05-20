@@ -29,7 +29,7 @@ Accounts.ui.config({
     requestPermissions: {},
     extraSignupFields: [{
         fieldName: 'first-name',
-        fieldLabel: 'First name',
+        fieldLabel: TAPi18n.__('firstName'),
         inputType: 'text',
         visible: true,
         saveToProfile: true,
@@ -43,7 +43,7 @@ Accounts.ui.config({
         }
     }, {
         fieldName: 'last-name',
-        fieldLabel: 'Last name',
+        fieldLabel: TAPi18n.__('lastName'),
         inputType: 'text',
         visible: true,
         saveToProfile: true,

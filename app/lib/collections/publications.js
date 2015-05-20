@@ -1,39 +1,65 @@
-Publications = new Meteor.Collection('publications');
+Publications =  new Meteor.Collection('publications');
+
+PublicationsPagination = new Meteor.Pagination(Publications, {
+    templateName: "PublicationsList",
+    itemTemplate: "PublicationsListItem",
+    divWrapper: false,
+    infinite: true,
+    infiniteTrigger: 0.8,
+    infiniteItemsLimit: Infinity,
+    dataMargin: 0,
+    paginationMargin: 0,
+    perPage: 21,
+    resetOnReload: true,
+    fastRender: false,
+    availableSettings: {
+        sort: true,
+        filters: true
+    }
+});
 
 Meteor.startup(function() {
-
-    Schema = new SimpleSchema({
+    PublicationsSchema = new SimpleSchema({
         name: {
             type: String,
             max: 200
         },
         description: {
-            type: String
+            type: String,
+            max: 500
         },
         price: {
             type: Number,
+            decimal: true,
             min: 0
         },
         category: {
-            type: String
+            type: String,
+            autoform: {
+                firstOption: TAPi18n.__('category')
+            }
         },
         age: {
-            type: String
+            type: String,
+            autoform: {
+                firstOption: TAPi18n.__('age')
+            }
         },
         photo: {
             type: String
         },
-        createdAt: {
-            type: Date
-        },
-        owner: {
-            type: String
+        status: {
+            type: Number,
+            decimal: false,
+            autoform: {
+                firstOption: TAPi18n.__('status')
+            }
         }
     });
 
-    Schema.i18n("schemas.publications");
+    PublicationsSchema.i18n("schemas.publications");
     
-    Publications.attachSchema(Schema);
+    Publications.attachSchema(PublicationsSchema);
 
 });
 

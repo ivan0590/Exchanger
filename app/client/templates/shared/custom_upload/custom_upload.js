@@ -1,5 +1,7 @@
+
 Template.CustomUpload.events({
     'change #fileInput': function (event) {
+
 
         //Si hay un archivo cargado
         if(event.target.files[0]){
@@ -9,15 +11,13 @@ Template.CustomUpload.events({
 
 
 	        file.owner = Meteor.userId();
-			
-			
-			switch(Blaze.getData().collection){
-				case 1:
-					collection = ImagesPublications;
-					break;
-			}
 
-
+            switch(Template.currentData().collection){
+                case 1:
+                    collection = ImagesPublications;
+                    break;
+            }
+            
 	        var uploadedFile = collection.insert(file, function (err, fileObj) {
 	            
 	            if (err) {
@@ -25,19 +25,27 @@ Template.CustomUpload.events({
 	            }
 	        });
 
-	        Template.registerHelper("uploadedFileId", function (){
-	        	return uploadedFile._id;
-	        });
+            $('[name=' + Template.currentData().name + ']').val(uploadedFile._id);
 
-        } else {
-
-            Template.registerHelper("uploadedFileId", function (){
-                return null;
-            });
         }
     }
 });
 
-Template.CustomUpload.onRendered(function () {
-	$.getScript("http://markusslima.github.io/bootstrap-filestyle/js/bootstrap-filestyle.min.js");
+/*****************************************************************************/
+/*  */
+/*****************************************************************************/
+Template.CustomUpload.helpers({
+    buttonText: function(){
+        return TAPi18n.__("photo");
+    }
 });
+
+Template.CustomUpload.onCreated(function () {
+
+});
+
+Template.CustomUpload.onRendered(function () {
+    
+    $.getScript("http://markusslima.github.io/bootstrap-filestyle/js/bootstrap-filestyle.min.js");
+});
+

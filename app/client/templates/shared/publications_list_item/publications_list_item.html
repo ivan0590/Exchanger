@@ -1,19 +1,20 @@
-<template name="Publication">
+<template name="PublicationsListItem">
 
-    <div class="ms-item col-md-4 col-lg-4" data-item-createdAt="{{createdAt}}">
+    <div class="ms-item col-md-4 col-lg-4">
+         
         <div class="well clearfix">
             
             <h4 class="break-word">
-                <a href="#" id="name">
+                <a href="/publication/{{_id._str}}">
                     {{name}}
                 </a>
             </h4>
 
-            {{#with getPhoto photo}}
-                <a href="#">
+            <a href="/publication/{{_id._str}}">
+                {{#with getPhoto photo}}
                     <img src="{{url store='images_publications'}}" alt="NO VA" class="img-responsive img-thumbnail" />
-                </a>
-            {{/with}}
+                {{/with}}
+            </a>
 
             {{#with getCategory category}}
                 <h5 class="col-md-8 col-lg-8 break-word">

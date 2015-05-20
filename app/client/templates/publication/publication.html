@@ -1,0 +1,78 @@
+<template name="Publication">
+    <div class="col-md-12 col-lg-12">
+        <div class="well clearfix">
+            
+            <legend> 
+                {{name}}
+                <h2 class="pull-right"><span class="label label-primary">{{price}} €</span></h2>
+                {{#with getStatus status}}
+                    <h2 class="pull-right"><span class="label label-{{label}}">{{text}}</span></h2>
+                {{/with}}
+            </legend>
+
+            {{#with getPhoto photo}}
+                <div class="col-md-5 col-lg-5 img-thumbnail">
+                    <img src="{{url store='images_publications'}}" alt="NO VA" class="img-responsive center-block" />
+                </div>
+            {{/with}}
+
+            <div class="col-md-7 col-lg-7">
+                
+                <div class="col-md-6 col-lg-6">
+                    <h4><span class="label label-primary">{{_ "seller"}}</span></h4>
+                    {{#with getUser owner}}
+                        {{#with profile}}
+                            <a href="#" class="col-md-12 col-lg-12">
+                                {{ [first-name] }} {{ [last-name] }}
+                            </a>
+                        {{/with}} 
+                    {{/with}}
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <h4><span class="label label-primary">{{_ "date"}}</span></h4>
+                    <p class="col-md-12 col-lg-12">{{createdAt}}</p>
+                </div>
+
+                <div class="col-md-6 col-lg-6">
+                    <h4><span class="label label-primary">{{_ "category"}}</span></h4>
+                    {{#with getCategory category}}
+                        <p class="col-md-12 col-lg-12">{{name}}</p>                        
+                    {{/with}}
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <h4><span class="label label-primary">{{_ "age"}}</span></h4>
+                    {{#with getAge age}}
+                        <p class="col-md-12 col-lg-12">{{name}}</p>                        
+                    {{/with}}
+                </div>
+                
+                <div class="col-md-12 col-lg-12">
+                    <h4><span class="label label-primary">{{_ "description"}}</span></h4>
+                    <p class="col-md-12 col-lg-12">{{description}}</p>                        
+                </div>
+
+                <div class="col-md-12 col-lg-12">
+                    
+                    {{#if checkUser owner}}
+                        <a href="/publication/{{_id._str}}/edit">
+                            <button class="btn btn-info">{{_ "button_editPublication"}}</button>
+                        </a>
+                        <button id="removePublication" class="btn btn-danger">{{_ "button_removePublication"}}</button>
+                    {{else}}
+                        {{#if currentUser}}
+                            <button class="btn btn-success">{{_ "button_acceptOffer"}}</button>
+                            <button class="btn btn-info">{{_ "button_bargainOffer"}}</button>
+                        
+                            {{#with getUser owner}}
+                                {{#with profile}}
+                                    <button class="btn btn-default">{{_ "button_chat" [first-name] [last-name] }}</button>
+                                {{/with}} 
+                            {{/with}}
+                        {{/if}}
+                    {{/if}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

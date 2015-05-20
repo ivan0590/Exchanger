@@ -6,29 +6,16 @@ TAPi18n.subscribe("ages");
 Meteor.subscribe("publications");
 
 /*****************************************************************************/
-/* Publish: Event Handlers */
+/* CreatePublication: Event Handlers */
 /*****************************************************************************/
-Template.Publish.events({
-	"click #add_publication": function(event){
-
-        var publication = 
-        {
-			name: $('[name="name"]').val(),
-			description: $('[name="description"]').val(),
-			price: $('[name="price"]').val(),
-			category: $('[name="category"]').val(),
-			age: $('[name="age"]').val(),
-			photo: UI._globalHelpers.uploadedFileId ? UI._globalHelpers.uploadedFileId() : ""
-		}
-        
-		Meteor.call('addPublication', publication);
-	}
+Template.CreatePublication.events({
+    
 });
 
 /*****************************************************************************/
-/* Publish: Helpers */
+/* CreatePublication: Helpers */
 /*****************************************************************************/
-Template.Publish.helpers({
+Template.CreatePublication.helpers({
 	categories: function() {
 		
         return Categories.find().map(function (element){
@@ -61,23 +48,16 @@ Template.Publish.helpers({
 
 
 /*****************************************************************************/
-/* Publish: Lifecycle Hooks */
+/* CreatePublication: Lifecycle Hooks */
 /*****************************************************************************/
-Template.Publish.onCreated(function () {
+Template.CreatePublication.onCreated(function () {
 });
 
-Template.Publish.onRendered(function () {
+Template.CreatePublication.onRendered(function () {
+
+    $('option[value=""]').prop('disabled', true);
+
 });
 
-Template.Publish.onDestroyed(function () {
-});
-
-
-/*****************************************************************************/
-/* Upload template button label */
-/*****************************************************************************/
-Template.CustomUpload.helpers({
-	buttonText: function(){
-		return TAPi18n.__("photo");
-	}
+Template.CreatePublication.onDestroyed(function () {
 });

@@ -1,8 +1,6 @@
 <template name="CustomUpload">
     
-    <input name="{{ name }}"
-           data-schema-key="{{ name }}"
-           type="file"
+    <input type="file"
            id="fileInput"
            accept="{{ accept }}"
            data-buttonBefore="true"
@@ -10,5 +8,5 @@
            data-icon="false"
            class="filestyle" />
 
-    
+    {{> afFieldInput name=name type="hidden"}}
 </template>

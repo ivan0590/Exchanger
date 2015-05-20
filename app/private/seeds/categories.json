@@ -1,4 +1,4 @@
-//mongoimport --host 127.0.0.1:3001 --db meteor --collection categories --type json --file /home/ivan/exchanger/app/server/collections/categories.json -jsonArray
+//mongoimport --host 127.0.0.1:3001 --db meteor --collection categories --type json --file /home/ivan/exchanger/app/private/seeds/categories.json -jsonArray
 [
 	{
 		_id: ObjectId("553d27cae530eeeaa4e038ca"),
