@@ -2,31 +2,31 @@ Ages = new TAPi18n.Collection('ages');
 
 
 if (Meteor.isServer) {
-  Ages.allow({
-    insert: function (userId, doc) {
-      return false;
-    },
+    Ages.allow({
+        insert: function(userId, doc) {
+            return false;
+        },
 
-    update: function (userId, doc, fieldNames, modifier) {
-      return false;
-    },
+        update: function(userId, doc, fieldNames, modifier) {
+            return false;
+        },
 
-    remove: function (userId, doc) {
-      return false;
-    }
-  });
+        remove: function(userId, doc) {
+            return false;
+        }
+    });
 
-  Ages.deny({
-    insert: function (userId, doc) {
-      return true;
-    },
+    Ages.deny({
+        insert: function(userId, doc) {
+            return true;
+        },
 
-    update: function (userId, doc, fieldNames, modifier) {
-      return true;
-    },
+        update: function(userId, doc, fieldNames, modifier) {
+            return true;
+        },
 
-    remove: function (userId, doc) {
-      return true;
-    }
-  });
+        remove: function(userId, doc) {
+            return true;
+        }
+    });
 }

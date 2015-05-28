@@ -1,8 +1,8 @@
-Categories = new TAPi18n.Collection('categories');
+Deals = new Mongo.Collection('deals');
 
 
 if (Meteor.isServer) {
-    Categories.allow({
+    Deals.allow({
         insert: function(userId, doc) {
             return false;
         },
@@ -16,7 +16,7 @@ if (Meteor.isServer) {
         }
     });
 
-    Categories.deny({
+    Deals.deny({
         insert: function(userId, doc) {
             return true;
         },

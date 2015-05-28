@@ -1,8 +1,8 @@
-Categories = new TAPi18n.Collection('categories');
+Notifications = new Mongo.Collection('notifications');
 
 
 if (Meteor.isServer) {
-    Categories.allow({
+    Notifications.allow({
         insert: function(userId, doc) {
             return false;
         },
@@ -16,7 +16,7 @@ if (Meteor.isServer) {
         }
     });
 
-    Categories.deny({
+    Notifications.deny({
         insert: function(userId, doc) {
             return true;
         },

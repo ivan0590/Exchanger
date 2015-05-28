@@ -1,6 +1,7 @@
 {
     "search": "Buscar",
     "publish": "Publicar",
+    "notifications": "Notificaciones",
     "editProfile": "Editar perfil",
     "firstName": "Nombre",
     "lastName": "Apellidos",
@@ -9,6 +10,14 @@
     "orderBy": "Ordenar por",
     "ascending": "Ascendentemente",
     "descending": "Descendentemente",
+
+    "notification_accepted": "%s %s  ha aceptado el precio de tu producto",
+    "notification_confirmed": "%s %s  ha confirmado la venta de un producto",
+    "notification_rejected": "%s %s  ha rechazado la venta de un producto",
+    "notification_cancelled": "%s %s  ha cancelado un trato",
+    "notification_bargained": "%s %s  te ofrece %s€ por tu producto",
+    "notification_stopBargaining": "%s %s ha dejado de regatear sobre el producto",
+    "notification_publicationRemoved": "%s %s ha eliminado la publicación",
 
     "title_createPublication": "Publicar un nuevo producto",
     "title_editPublication": "Editar una publicación",
@@ -23,21 +32,31 @@
     "date": "Fecha",
     "seller": "Vendedor",
 
+    "message_waitingForAcceptResponse": "Publicación aceptada, esperando respuesta del vendedor.",
+    "message_waitingForBargainResponse": "En proceso de regateo.",
+
     "status_onSale": "En venta",
     "status_waiting": "En espera de ser vendido",
     "status_sold": "Vendido",
 
-    "button_acceptOffer": "Aceptar oferta",
-    "button_bargainOffer": "Regatear oferta",
+    "button_confirm": "Confirmar",
+    "button_reject": "Rechazar",
+    "button_keepBargaining": "Seguir regateando",
+    "button_stopBargaining": "Parar de regatear",
+    "button_close": "Cerrar",
     "button_chat": "Chatear con %s %s",
+    "button_cancelDeal": "Cancelar trato con %s %s",
+    "button_acceptPublication": "Aceptar precio",
+    "button_bargainPublication": "Regatear",
     "button_createPublication": "Crear publicación",
     "button_editPublication": "Editar publicación",
     "button_removePublication": "Borrar publicación",
 
-    "message_removePublication": "¿De verdad deseas borrar esta publicación?",
+    "modal_removePublication": "¿De verdad deseas borrar esta publicación?",
+    "modal_bargainPublication": "Regatear el precio (entre __min__€ y __max__€)",
 
     "schemas": {
-        
+
         "publications": {
 
             "name": {

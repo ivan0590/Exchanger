@@ -2,14 +2,43 @@
     <div class="col-md-12 col-lg-12">
         <div class="well clearfix">
             
-            <legend> 
-                {{name}}
-                <h2 class="pull-right"><span class="label label-primary">{{price}} €</span></h2>
-                {{#with getStatus status}}
-                    <h2 class="pull-right"><span class="label label-{{label}}">{{text}}</span></h2>
-                {{/with}}
-            </legend>
+            <legend>                
+                <a href="/" class="col-md-1 col-lg-1 row">
+                    <button class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                </a>
 
+                <span class="h2 text-center">
+                        {{name}}
+                </span>
+                
+                <span class="h2 pull-right">
+                    <span class="label label-primary">
+                        {{#if $and checkSellerAccepted checkSellerBargained}}
+                            {{#if $eq status 1}}
+                                {{#with checkSellerBargained}}
+                                    {{#if $eq turn "buyer"}}
+                                        {{sellerPrice}} €
+                                    {{else}}
+                                        {{buyerPrice}} €                                    
+                                    {{/if}}
+                                {{/with}}
+                                <del class="small">{{price}} €</del>
+                            {{else}}
+                                {{price}} €
+                            {{/if}}
+                        {{else}}
+                            {{price}} €
+                        {{/if}}
+
+                    </span>
+                </span>
+
+                <span class="h2 pull-right">
+                    <span class=" label label-{{statusLabel}}">{{statusText}}</span>
+                </span>
+            </legend>
             {{#with getPhoto photo}}
                 <div class="col-md-5 col-lg-5 img-thumbnail">
                     <img src="{{url store='images_publications'}}" alt="NO VA" class="img-responsive center-block" />
@@ -53,22 +82,57 @@
 
                 <div class="col-md-12 col-lg-12">
                     
-                    {{#if checkUser owner}}
-                        <a href="/publication/{{_id._str}}/edit">
-                            <button class="btn btn-info">{{_ "button_editPublication"}}</button>
-                        </a>
-                        <button id="removePublication" class="btn btn-danger">{{_ "button_removePublication"}}</button>
-                    {{else}}
-                        {{#if currentUser}}
-                            <button class="btn btn-success">{{_ "button_acceptOffer"}}</button>
-                            <button class="btn btn-info">{{_ "button_bargainOffer"}}</button>
-                        
-                            {{#with getUser owner}}
-                                {{#with profile}}
-                                    <button class="btn btn-default">{{_ "button_chat" [first-name] [last-name] }}</button>
-                                {{/with}} 
+                    {{#if currentUser}}
+
+                        {{#if $eq status 0}}
+
+                            {{#if $eq $.Meteor.userId owner}}
+                                {{#unless $or checkSellerAccepted checkSellerBargained}}
+                                    <a href="/publication/{{_id._str}}/edit">
+                                        <button class="btn btn-info">{{_ "button_editPublication"}}</button>
+                                    </a>
+                                {{/unless}}
+                                <button id="removePublication" class="btn btn-danger">{{_ "button_removePublication"}}</button>
+                            {{else}}
+                                    {{#unless $or checkBuyerAccepted checkBuyerBargained}}
+                                        <button id="acceptPublication" class=" btn btn-success">{{_ "button_acceptPublication"}}</button>
+                                        <button id="bargainPublication" class="btn btn-info">{{_ "button_bargainPublication"}}</button>
+                                    {{/unless}}
+
+                                    {{#if checkBuyerAccepted}}
+                                        <h4><span class="label label-info">{{_ "message_waitingForAcceptResponse"}}</span></h4>
+                                    {{else}}
+                                        {{#if checkBuyerBargained}}
+                                            <h4><span class="label label-info">{{_ "message_waitingForBargainResponse"}}</span></h4>
+                                        {{/if}}
+                                    {{/if}}
+
+                                    {{#with getUser owner}}
+                                        {{#with profile}}
+                                            <button class="btn btn-default">{{_ "button_chat" [first-name] [last-name] }}</button>
+                                        {{/with}} 
+                                    {{/with}}
+                            {{/if}}
+                        {{/if}}
+
+                        {{#if $eq status 1}}
+
+                            {{#with checkSellerAccepted}}
+                                {{#if $eq $.Meteor.userId buyer}}
+                                    {{#with getUser seller}}
+                                        <button class="cancelDeal btn btn-danger">{{_ "button_cancelDeal" profile.[first-name] profile.[last-name] }}</button>
+                                        <button class="btn btn-default">{{_ "button_chat" profile.[first-name] profile.[last-name] }}</button>
+                                    {{/with}}
+                                {{/if}}
+                                {{#if $eq $.Meteor.userId seller}}
+                                    {{#with getUser buyer}}
+                                        <button class="cancelDeal btn btn-danger">{{_ "button_cancelDeal" profile.[first-name] profile.[last-name] }}</button>
+                                        <button class="btn btn-default">{{_ "button_chat" profile.[first-name] profile.[last-name] }}</button>
+                                    {{/with}}
+                                {{/if}}
                             {{/with}}
                         {{/if}}
+
                     {{/if}}
 
                 </div>

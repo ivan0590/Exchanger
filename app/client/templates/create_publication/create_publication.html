@@ -34,7 +34,7 @@
                     </div>
 
                     <div  class="form-group">
-                        {{> afFieldInput name='category' type="select" options=categories allowedValues=allowedCategories }}
+                        {{> afFieldInput name='category' type="select" options=optionsCategories allowedValues=allowedCategories }}
                         {{#if afFieldIsInvalid name='category'}}
                             <span class="help-block text-danger">
                                 {{{afFieldMessage name='category'}}}
@@ -43,7 +43,7 @@
                     </div>
 
                     <div  class="form-group">
-                        {{> afFieldInput name='age' type="select" options=ages allowedValues=allowedAges  }}
+                        {{> afFieldInput name='age' type="select" options=optionsAges allowedValues=allowedAges  }}
                         {{#if afFieldIsInvalid name='age'}}
                             <span class="help-block text-danger">
                                 {{{afFieldMessage name='age'}}}
@@ -52,19 +52,17 @@
                     </div>
 
                     <div  class="form-group">
-                        {{> CustomUpload name="photo" accept=".jpg, .jpeg, .png" collection=1 }}
+                        {{> CustomUpload name="photo" buttonTextKey="photo" accept=".jpg, .jpeg, .png" collection=1 }}
                         {{#if afFieldIsInvalid name='photo'}}
                             <span class="help-block text-danger">
                                 {{{afFieldMessage name='photo'}}}
                             </span>
                         {{/if}}
                     </div>
-
-                    {{> afFieldInput name='status' type="hidden" value=0 }}
                 </div>
 
                 <div  class="form-group">
-                    <button type="submit" id="create_publication" class="btn btn-success center-block">{{_ "button_createPublication"}}</button>
+                    <button type="submit" class="btn btn-success center-block">{{_ "button_createPublication"}}</button>
                 </div>
             </fieldset>
         {{/autoForm}}

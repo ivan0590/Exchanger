@@ -1,6 +1,7 @@
 {
     "search": "Search",
     "publish": "Publish",
+    "notifications": "Notifications",
     "editProfile": "Edit profile",
     "firstName": "First Name",
     "lastName": "Last Name",
@@ -9,6 +10,14 @@
     "orderBy": "Order by",
     "ascending": "Ascending",
     "descending": "Descending",
+
+    "notification_accepted": "%s %s has accepted the price of your product",
+    "notification_confirmed": "%s %s  has confirmed the sell of a product",
+    "notification_rejected": "%s %s  has rejected the sell of a product",
+    "notification_cancelled": "%s %s  has cancelled a deal",
+    "notification_bargained": "%s %s  offers you %s€ for your product",
+    "notification_stopBargaining": "%s %s has stopped bargaining over the product",
+    "notification_publicationRemoved": "%s %s has removed the publication",
 
     "title_createPublication": "Publish new product",
     "title_editPublication": "Edit a publicación",
@@ -23,18 +32,28 @@
     "date": "Date",
     "seller": "Seller",
 
+    "message_waitingForAcceptResponse": "Publication accepted, waiting seller's response.",
+    "message_waitingForBargainResponse": "In bargain process.",
+
     "status_onSale": "On sale",
     "status_waiting": "Waiting to be sold",
     "status_sold": "Sold",
 
-    "button_acceptOffer": "Accept offer",
-    "button_bargainOffer": "Bargain offer",
+    "button_confirm": "Confirm",
+    "button_reject": "Reject",
+    "button_keepBargaining": "Keep bargaining",
+    "button_stopBargaining": "Stop bargaining",
+    "button_close": "Close",
     "button_chat": "Chat with %s %s",
+    "button_cancelDeal": "Cancel deal with %s %s",
+    "button_acceptPublication": "Accept price",
+    "button_bargainPublication": "Bargain",
     "button_createPublication": "Create publication",
     "button_editPublication": "Edit publication",
     "button_removePublication": "Remove publication",
 
-    "message_removePublication": "Do you really want to remove this publication?",
+    "modal_removePublication": "Do you really want to remove this publication?",
+    "modal_bargainPublication": "Bargain the price (between __min__€ and  __max__€)",
 
     "schemas": {
 

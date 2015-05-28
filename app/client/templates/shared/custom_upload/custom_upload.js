@@ -35,9 +35,7 @@ Template.CustomUpload.events({
 /*  */
 /*****************************************************************************/
 Template.CustomUpload.helpers({
-    buttonText: function(){
-        return TAPi18n.__("photo");
-    }
+    
 });
 
 Template.CustomUpload.onCreated(function () {

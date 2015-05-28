@@ -1,6 +1,6 @@
 PublicationController = RouteController.extend({
     subscriptions: function() {
-
+        
     },
 
     data: function() {
@@ -9,14 +9,20 @@ PublicationController = RouteController.extend({
 
     create: function() {
 
+        if (!Meteor.userId()) {
+            Router.go('home');
+        }
+        
         this.render('CreatePublication');
     },
 
     show: function() {
 
+        var publication;
+
         try {
 
-            var publication = Publications.findOne({
+            publication = Publications.findOne({
                 _id: new Mongo.ObjectID(this.params._id)
             });
 
@@ -24,35 +30,46 @@ PublicationController = RouteController.extend({
                 this.render('Publication', {
                     data: publication
                 });
-            } else {
-                Router.go('home');
             }
 
         } catch (e) {
-            Router.go('home');
+            
+            console.log("Publication doesn't exists");
+
+        } finally {
+
+            if(!publication){
+                Router.go('home');
+            }
         }
 
     },
 
     edit: function() {
         
+        var publication;
+
         try {
 
-            var publication = Publications.findOne({
-                _id: new Mongo.ObjectID(this.params._id),
-                owner: Meteor.userId()
+            publication = Publications.findOne({
+                _id: new Mongo.ObjectID(this.params._id)
             });
 
             if (publication) {
                 this.render('EditPublication', {
                     data: publication
                 });
-            } else {
-                Router.go('home');
             }
 
         } catch (e) {
-            Router.go('home');
+            
+            console.log("Publication doesn't exists");
+
+        } finally {
+
+            if(!publication){
+                Router.go('home');
+            }
         }
 
     }

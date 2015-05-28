@@ -1,11 +1,20 @@
 /*****************************************************************************/
 /* main: Style */
 /*****************************************************************************/
-.main {
-}
+
+.main {}
 
 textarea {
     resize: none;
+}
+
+.label,
+.navbar {
+    border-radius: 0 !important;
+}
+
+.dropdown-menu {
+    background-color: #28415b !important;
 }
 
 .break-word {

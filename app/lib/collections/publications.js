@@ -1,4 +1,4 @@
-Publications =  new Meteor.Collection('publications');
+Publications = new Meteor.Collection('publications');
 
 PublicationsPagination = new Meteor.Pagination(Publications, {
     templateName: "PublicationsList",
@@ -20,6 +20,10 @@ PublicationsPagination = new Meteor.Pagination(Publications, {
 
 Meteor.startup(function() {
     PublicationsSchema = new SimpleSchema({
+        _id: {
+            type: Mongo.ObjectID,
+            optional: true
+        },
         name: {
             type: String,
             max: 200
@@ -50,15 +54,24 @@ Meteor.startup(function() {
         },
         status: {
             type: Number,
+            optional: true,
             decimal: false,
             autoform: {
                 firstOption: TAPi18n.__('status')
             }
+        },
+        createdAt: {
+            type: Date,
+            optional: true
+        },
+        owner: {
+            type: String,
+            optional: true
         }
     });
 
     PublicationsSchema.i18n("schemas.publications");
-    
+
     Publications.attachSchema(PublicationsSchema);
 
 });
