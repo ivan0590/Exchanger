@@ -2,27 +2,13 @@
 /* PublicationsListItem: Event Handlers */
 /*****************************************************************************/
 Template.PublicationsListItem.events({
+    'click .setCategory': function(event) {
+        
+        _.each($('.category:checked'), function(element, index) {
 
-});
-
-/*****************************************************************************/
-/* PublicationsListItem: Helpers */
-/*****************************************************************************/
-Template.PublicationsListItem.helpers({
-	
-});
-
-/*****************************************************************************/
-/* PublicationsListItem: Lifecycle Hooks */
-/*****************************************************************************/
-Template.PublicationsListItem.onCreated(function () {
-
-});
-
-Template.PublicationsListItem.onRendered(function () {
-
-});
-
-Template.PublicationsListItem.onDestroyed(function () {
-	
+            $(element).prop('checked', false).trigger("change");
+        });
+        
+        $('.category[value=' + $(event.currentTarget).data('id') + ']').prop('checked', true).trigger("change");
+    }
 });

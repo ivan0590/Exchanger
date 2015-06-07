@@ -1,57 +1,119 @@
 <template name="PublicationsListFilterSort">
-    
-    <!-- Sort -->
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4>{{_ "orderBy"}}</h4>
-        </div>
-        <div class="panel-body">
-            
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <input type="radio" value="name" name="sort">
-                </span>
-                <p class="form-control">{{_ "name"}}</p>
-            </div>
-                    
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <input type="radio" value="price" name="sort">
-                </span>
-                <p class="form-control">{{_ "price"}}</p>
-            </div>
-                    
-            <div class="input-group">
-                <span class="input-group-addon">
-                    <input type="radio" value="createdAt" name="sort" checked>
-                </span>
-                <p class="form-control">{{_ "date"}}</p>
-            </div>
+    <div class="panel-group" id="accordion">
+        
+        <!-- Sort -->
+        <div class="panel panel-default" >
+            <a data-toggle="collapse" data-target="#collapseSort" class="text-muted" href="#">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="glyphicon glyphicon-sort"></span>
+                        <span>&nbsp;{{_ "filter_sort.sort"}}</span>
+                        <span id="chevronSort" class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </h4>
+                </div>
+            </a>
+            <div id="collapseSort" class="panel-collapse collapse">
+                <div>
+                    <div>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="radio" value="name" name="sort">
+                            </span>
+                            <p class="form-control">
+                                {{_ "schemas.publications.name.label"}}
+                            </p>
+                        </div>
+                    </div>
+                            
+                    <div>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="radio" value="price" name="sort">
+                            </span>
+                            <p class="form-control">
+                                {{_ "schemas.publications.price.label"}}
+                            </p>
+                        </div>
+                    </div>
+                          
+                      <div>  
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="radio" value="createdAt" name="sort" checked>
+                            </span>
+                            <p class="form-control">{{_ "date"}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <button type="button" id="order" class="btn btn-info col-md-12 col-lg-12">
+                        <h5></h5>
+                    </button>
+                </div>
 
-            
+            </div>
         </div>
-        <div class="panel-footer clearfix">
-            <button type="button" id="order" class="btn btn-default col-md-12 col-lg-12">
-                <h5 data-label="ascending">{{_ "ascending"}}</h5>
-            </button>
-        </div>
-    </div>
 
-    <!-- Filter -->
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4>{{_ "filter"}}</h4>
-        </div>
-        <div class="panel-body">
-            <h5>{{_ "category"}}</h5>
-            <ul class="list-unstyled">
-                {{#each categories}}
-                    <li>
-                        <input type="checkbox" value="{{_id._str}}" class="category col-md-1 col-lg-1" />
-                        <span class="col-md-11 col-lg-11">{{name}}</span>
-                    </li>
-                {{/each}}
-            </ul>
+        <!-- Filter -->
+        <div class="panel panel-default">
+            <a data-toggle="collapse" data-target="#collapseFilter" href="" class="text-muted">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <span class="glyphicon glyphicon-filter"></span>
+                        <span>&nbsp;{{_ "filter_sort.filter"}}</span>
+                        <span id="chevronFilter" class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    </h4>
+                </div>
+            </a>
+            <div id="collapseFilter" class="panel-collapse collapse">
+                <div class="panel-body">
+                    
+                    <h5 id="collapseStatus" class="clearfix" role="button">
+                        <span>&nbsp;{{_ "schemas.publications.status.label"}}</span>
+                        <span id="chevronStatus"  class="glyphicon glyphicon-chevron-right"></span>
+                    </h5>
+                    <ul id="filterStatus" class="list-unstyled hidden clearfix">
+                        <li>
+                            <input type="checkbox" value="0" class="status col-md-1 col-lg-1" />
+                            <span class="col-md-11 col-lg-11">{{_ "status.onSale"}}</span>
+                        </li>
+                        <li>
+                            <input type="checkbox" value="1" class="status col-md-1 col-lg-1" />
+                            <span class="col-md-11 col-lg-11">{{_ "status.waiting"}}</span>
+                        </li>
+                        <li>
+                            <input type="checkbox" value="2" class="status col-md-1 col-lg-1" />
+                            <span class="col-md-11 col-lg-11">{{_ "status.sold"}}</span>
+                        </li>
+                    </ul>
+
+                    <h5 id="collapseCategory" class="clearfix" role="button">
+                        <span>&nbsp;{{_ "schemas.publications.category.label"}}</span>
+                        <span id="chevronCategory" class="glyphicon glyphicon-chevron-right"></span>
+                    </h5>
+                    <ul id="filterCategory" class="list-unstyled hidden clearfix">
+                        {{#each categories}}
+                        <li>
+                            <input type="checkbox" value="{{_id._str}}" class="category col-md-1 col-lg-1" />
+                            <span class="col-md-11 col-lg-11">{{name}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                                        
+                    <h5 id="collapseAge" class="clearfix" role="button">
+                        <span>&nbsp;{{_ "schemas.publications.age.label"}}</span>
+                        <span id="chevronAge" class="glyphicon glyphicon-chevron-right"></span>
+                    </h5>
+                    <ul id="filterAge" class="list-unstyled hidden clearfix">
+                        {{#each ages}}
+                        <li>
+                            <input type="checkbox" value="{{_id._str}}" class="age col-md-1 col-lg-1" />
+                            <span class="col-md-11 col-lg-11">{{name}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </template>

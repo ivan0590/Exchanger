@@ -9,7 +9,8 @@ textarea {
 }
 
 .label,
-.navbar {
+.navbar,
+.input-group p[class="form-control"] {
     border-radius: 0 !important;
 }
 
@@ -19,4 +20,8 @@ textarea {
 
 .break-word {
     word-wrap: break-word;
+}
+
+.no-margin {
+    margin: 0 !important;
 }

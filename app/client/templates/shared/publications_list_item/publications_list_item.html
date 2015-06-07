@@ -3,7 +3,6 @@
     <div class="ms-item col-md-4 col-lg-4">
          
         <div class="well clearfix">
-            
             <h4 class="break-word">
                 <a href="/publication/{{_id._str}}">
                     {{name}}
@@ -11,14 +10,14 @@
             </h4>
 
             <a href="/publication/{{_id._str}}">
-                {{#with getPhoto photo}}
-                    <img src="{{url store='images_publications'}}" alt="NO VA" class="img-responsive img-thumbnail" />
+                {{#with getPublicationPhoto photo}}
+                    <img src="{{url store='images_publications'}}" alt="{{_ 'noImage'}}" class="img-responsive img-thumbnail" />
                 {{/with}}
             </a>
 
             {{#with getCategory category}}
                 <h5 class="col-md-8 col-lg-8 break-word">
-                    <a href="#">
+                    <a role="button" class="setCategory" data-id="{{_id._str}}">
                         {{name}}
                     </a>
                 </h5>
@@ -29,11 +28,16 @@
             <div>
                 <div class="col-md-12 col-lg-12">
                     {{#with getUser owner}}
-                        {{#with profile}}
-                            <a href="#" class="break-word">
-                                {{ [first-name] }} {{ [last-name] }}
-                            </a>
-                        {{/with}} 
+                        <a href="/profile/{{_id}}" class="break-word">
+                            {{#if profile.avatar}}
+                                {{#with getProfilePhoto profile.avatar}}
+                                    <img src="{{url store='images_profiles'}}" alt="{{_ 'noImage'}}" class="col-md-5 col-lg-4 row img-responsive img-circle" />
+                                {{/with}}
+                            {{/if}}
+                            <div class="col-md-7 col-lg-8">
+                                {{ profile.firstName }} {{ profile.lastName }}
+                            </div>
+                        </a>
                     {{/with}}
                 </div>
             </div>

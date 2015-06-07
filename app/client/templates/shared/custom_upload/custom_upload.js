@@ -1,9 +1,11 @@
-
+/*****************************************************************************/
+/* CustomUpload: Event Handlers */
+/*****************************************************************************/
 Template.CustomUpload.events({
     'change #fileInput': function (event) {
 
 
-        //Si hay un archivo cargado
+        //If a file was loaded
         if(event.target.files[0]){
         	
 		    var file = new FS.File(event.target.files[0]);
@@ -12,11 +14,8 @@ Template.CustomUpload.events({
 
 	        file.owner = Meteor.userId();
 
-            switch(Template.currentData().collection){
-                case 1:
-                    collection = ImagesPublications;
-                    break;
-            }
+            //Eval is evil, but in this case is ok since I'm not using user inputs here
+            collection = eval(Template.currentData().collection);
             
 	        var uploadedFile = collection.insert(file, function (err, fileObj) {
 	            
@@ -25,25 +24,18 @@ Template.CustomUpload.events({
 	            }
 	        });
 
-            $('[name=' + Template.currentData().name + ']').val(uploadedFile._id);
+            if(Template.currentData().schema){
+                $('#schemaField').val(uploadedFile._id);                
+            }
 
         }
     }
 });
 
 /*****************************************************************************/
-/*  */
+/* CustomUpload: Lifecycle Hooks */
 /*****************************************************************************/
-Template.CustomUpload.helpers({
-    
-});
-
-Template.CustomUpload.onCreated(function () {
-
-});
-
-Template.CustomUpload.onRendered(function () {
-    
+Template.CustomUpload.onRendered(function () {    
     $.getScript("http://markusslima.github.io/bootstrap-filestyle/js/bootstrap-filestyle.min.js");
 });
 

@@ -1,0 +1,79 @@
+<template name="EditProfile">
+    <div class="col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 well">
+        {{#autoForm collection="Meteor.users" doc=this id="updateProfileForm" type="method-update" meteormethod="updateProfile" }}
+            <fieldset>
+                <legend>
+                    <a href="/profile/{{_id}}">
+                        <button class="btn btn-default">
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                        </button>
+                    </a>  
+                    <div class="text-center">{{_ "title.editProfile"}}</div>
+                </legend>
+
+                <div  class="col-md-12 col-lg-12">
+                    <div  class="form-group">
+                        {{> afFieldInput name='profile.firstName' }}
+                        {{#if afFieldIsInvalid name='profile.firstName'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='profile.firstName'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+                        {{> afFieldInput name='profile.lastName' }}
+                        {{#if afFieldIsInvalid name='profile.lastName'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='profile.lastName'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+                        {{> afFieldInput name='profile.birthdate' }}
+                        {{#if afFieldIsInvalid name='profile.birthdate' type="date"}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='profile.birthdate'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+                        {{> afFieldInput name='profile.location' }}
+                        {{#if afFieldIsInvalid name='profile.location'}}
+                            <span class="help-block text-danger">
+                                {{{afFieldMessage name='profile.location'}}}
+                            </span>
+                        {{/if}}
+                    </div>
+
+                    <div  class="form-group">
+
+                        <div>
+                            <div class="img-thumbnail col-md-12 col-lg-12">
+                                {{#if profile.avatar}}
+                                    {{#with getProfilePhoto profile.avatar}}
+                                        <img src="{{url store='images_profiles'}}" alt="{{_ 'noImage'}}" class="img-responsive img-circle center-block" />
+                                    {{/with}}
+                                {{else}}
+                                    <img src="http://placehold.it/300x300&text={{_ 'noImage'}}" alt="{{_ 'noImage'}}" class="img-responsive img-circle center-block" />
+                                {{/if}}
+                            </div>
+                            {{> CustomUpload  name="profile.avatar" buttonTextKey="schemas.users.profile.avatar.label" accept=".jpg, .jpeg, .png" collection="ImagesProfiles" schema=true }}
+                            {{#if afFieldIsInvalid name='profile.avatar'}}
+                                <span class="help-block text-danger">
+                                    {{{afFieldMessage name='profile.avatar'}}}
+                                </span>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+
+                <div  class="form-group">
+                    <button type="submit" class="btn btn-success center-block">{{_ "button.editProfile"}}</button>
+                </div>
+            </fieldset>
+        {{/autoForm}}
+    </div>
+</template>

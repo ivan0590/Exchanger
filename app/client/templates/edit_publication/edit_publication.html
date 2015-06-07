@@ -9,7 +9,7 @@
                             <span class="glyphicon glyphicon-arrow-left"></span>
                         </button>
                     </a>  
-                    <div class="text-center">{{_ "title_editPublication"}}</div>
+                    <div class="text-center">{{_ "title.editPublication"}}</div>
                 </legend>
 
                 <div  class="col-md-12 col-lg-12">
@@ -61,12 +61,12 @@
                     <div  class="form-group">
 
                         <div>
-                            {{#with getPhoto photo}}
+                            {{#with getPublicationPhoto photo}}
                                 <div class="img-thumbnail col-md-12 col-lg-12">
-                                        <img src="{{url store='images_publications'}}" alt="NO VA" class="img-responsive center-block" />
+                                        <img src="{{url store='images_publications'}}" alt="{{_ 'noImage'}}" class="img-responsive center-block" />
                                 </div>
                             {{/with}}
-                            {{> CustomUpload  name="photo" buttonTextKey="photo" accept=".jpg, .jpeg, .png" collection=1 }}
+                            {{> CustomUpload  name="photo" buttonTextKey="schemas.publications.photo.label" accept=".jpg, .jpeg, .png" collection="ImagesPublications" schema=true }}
                             {{#if afFieldIsInvalid name='photo'}}
                                 <span class="help-block text-danger">
                                     {{{afFieldMessage name='photo'}}}
@@ -77,7 +77,7 @@
                 </div>
 
                 <div  class="form-group">
-                    <button type="submit" class="btn btn-success center-block">{{_ "button_editPublication"}}</button>
+                    <button type="submit" class="btn btn-success center-block">{{_ "button.editPublication"}}</button>
                 </div>
             </fieldset>
         {{/autoForm}}

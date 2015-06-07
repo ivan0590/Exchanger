@@ -1,4 +1,20 @@
+/*****************************************************************************/
+/* PublicationsList: Lifecycle Hooks */
+/*****************************************************************************/
 Template.PublicationsList.onRendered(function() {
+
+    function organizeIsotope(argument) {
+
+        container.imagesLoaded(function() {
+            container.isotope('reloadItems').isotope('layout').isotope();
+
+            if (!container.children().not('#noResultsMessage').length) {
+                $('#noResultsMessage').removeClass('hidden').hide().fadeIn(600);
+            } else {
+                $('#noResultsMessage').hide();
+            }
+        });
+    }
 
     var container = $('#container');
 
@@ -10,28 +26,20 @@ Template.PublicationsList.onRendered(function() {
             itemSelector: '.ms-item',
             transitionDuration: '0s'
         }).isotope('layout').isotope();
-
     });
 
-    //Using a MutationObserver to readapt the layout when a new item is added
-    var observer = new MutationObserver(function(mutations) {
-        
-        container.imagesLoaded(function() {
-            container.isotope('reloadItems').isotope('layout').isotope();
-        });
+    container[0]._uihooks = {
+        insertElement: function(node, next) {
 
-    });
+            $(node).insertBefore(next);
 
-    //Adding the MutationObserver to the items container
-    observer.observe(container.get(0), {
-        attributes: false, 
-        childList: true, 
-        characterData: false
-    });
-    
+            organizeIsotope();
+        },
+        removeElement: function(node, next) {
+
+            $(node).remove();
+
+            organizeIsotope();
+        }
+    };
 });
-
-Template.PublicationsList.onDestroyed(function() {
-
-});
-

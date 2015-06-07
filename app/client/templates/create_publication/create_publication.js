@@ -7,7 +7,7 @@ Template.CreatePublication.events({
         $('#insertPublicationForm').fadeOut('400', function() {
             var last = Publications.find({}, {sort: {createdAt:-1}, limit: 1}).fetch()[0];
 
-            Router.go('/publication/' + last._id._str);
+            Router.go('show_publication', {_id: last._id._str});
             
         });
     }
@@ -15,19 +15,8 @@ Template.CreatePublication.events({
 });
 
 /*****************************************************************************/
-/* CreatePublication: Helpers */
-/*****************************************************************************/
-Template.CreatePublication.helpers({
-    
-});
-
-
-/*****************************************************************************/
 /* CreatePublication: Lifecycle Hooks */
 /*****************************************************************************/
-Template.CreatePublication.onCreated(function () {
-});
-
 Template.CreatePublication.onRendered(function () {
 
     //Disable the first options of the selects

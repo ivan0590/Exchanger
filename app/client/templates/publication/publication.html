@@ -10,7 +10,7 @@
                 </a>
 
                 <span class="h2 text-center">
-                        {{name}}
+                    {{name}}
                 </span>
                 
                 <span class="h2 pull-right">
@@ -31,7 +31,6 @@
                         {{else}}
                             {{price}} €
                         {{/if}}
-
                     </span>
                 </span>
 
@@ -39,44 +38,42 @@
                     <span class=" label label-{{statusLabel}}">{{statusText}}</span>
                 </span>
             </legend>
-            {{#with getPhoto photo}}
+            {{#with getPublicationPhoto photo}}
                 <div class="col-md-5 col-lg-5 img-thumbnail">
-                    <img src="{{url store='images_publications'}}" alt="NO VA" class="img-responsive center-block" />
+                    <img src="{{url store='images_publications'}}" alt="{{_ 'noImage'}}" class="img-responsive center-block" />
                 </div>
             {{/with}}
 
             <div class="col-md-7 col-lg-7">
                 
                 <div class="col-md-6 col-lg-6">
-                    <h4><span class="label label-primary">{{_ "seller"}}</span></h4>
+                    <h4><span class="label label-primary">{{_ "publication.seller"}}</span></h4>
                     {{#with getUser owner}}
-                        {{#with profile}}
-                            <a href="#" class="col-md-12 col-lg-12">
-                                {{ [first-name] }} {{ [last-name] }}
-                            </a>
-                        {{/with}} 
+                        <a href="/profile/{{_id}}" class="col-md-12 col-lg-12">
+                            {{ profile.firstName }} {{ profile.lastName }}
+                        </a>
                     {{/with}}
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <h4><span class="label label-primary">{{_ "date"}}</span></h4>
-                    <p class="col-md-12 col-lg-12">{{createdAt}}</p>
+                    <p class="col-md-12 col-lg-12">{{prettifyDate createdAt 'L HH:mm:ss'}}</p>
                 </div>
 
                 <div class="col-md-6 col-lg-6">
-                    <h4><span class="label label-primary">{{_ "category"}}</span></h4>
+                    <h4><span class="label label-primary">{{_ "schemas.publications.category.label"}}</span></h4>
                     {{#with getCategory category}}
                         <p class="col-md-12 col-lg-12">{{name}}</p>                        
                     {{/with}}
                 </div>
                 <div class="col-md-6 col-lg-6">
-                    <h4><span class="label label-primary">{{_ "age"}}</span></h4>
+                    <h4><span class="label label-primary">{{_ "schemas.publications.age.label"}}</span></h4>
                     {{#with getAge age}}
                         <p class="col-md-12 col-lg-12">{{name}}</p>                        
                     {{/with}}
                 </div>
                 
                 <div class="col-md-12 col-lg-12">
-                    <h4><span class="label label-primary">{{_ "description"}}</span></h4>
+                    <h4><span class="label label-primary">{{_ "schemas.publications.description.label"}}</span></h4>
                     <p class="col-md-12 col-lg-12">{{description}}</p>                        
                 </div>
 
@@ -88,30 +85,28 @@
 
                             {{#if $eq $.Meteor.userId owner}}
                                 {{#unless $or checkSellerAccepted checkSellerBargained}}
-                                    <a href="/publication/{{_id._str}}/edit">
-                                        <button class="btn btn-info">{{_ "button_editPublication"}}</button>
+                                    <a href="/publication/{{_id._str}}/edit"  class="btn btn-info">
+                                        {{_ "button.editPublication"}}
                                     </a>
                                 {{/unless}}
-                                <button id="removePublication" class="btn btn-danger">{{_ "button_removePublication"}}</button>
+                                <button id="removePublication" class="btn btn-danger">{{_ "button.removePublication"}}</button>
                             {{else}}
-                                    {{#unless $or checkBuyerAccepted checkBuyerBargained}}
-                                        <button id="acceptPublication" class=" btn btn-success">{{_ "button_acceptPublication"}}</button>
-                                        <button id="bargainPublication" class="btn btn-info">{{_ "button_bargainPublication"}}</button>
-                                    {{/unless}}
+                                {{#unless $or checkBuyerAccepted checkBuyerBargained}}
+                                    <button id="acceptPublication" class=" btn btn-success">{{_ "button.acceptPublication"}}</button>
+                                    <button id="bargainPublication" class="btn btn-info">{{_ "button.bargainPublication"}}</button>
+                                {{/unless}}
 
-                                    {{#if checkBuyerAccepted}}
-                                        <h4><span class="label label-info">{{_ "message_waitingForAcceptResponse"}}</span></h4>
-                                    {{else}}
-                                        {{#if checkBuyerBargained}}
-                                            <h4><span class="label label-info">{{_ "message_waitingForBargainResponse"}}</span></h4>
-                                        {{/if}}
+                                {{#if checkBuyerAccepted}}
+                                    <h4><span class="label label-info">{{_ "message.waitingForAcceptResponse"}}</span></h4>
+                                {{else}}
+                                    {{#if checkBuyerBargained}}
+                                        <h4><span class="label label-info">{{_ "message.waitingForBargainResponse"}}</span></h4>
                                     {{/if}}
+                                {{/if}}
 
-                                    {{#with getUser owner}}
-                                        {{#with profile}}
-                                            <button class="btn btn-default">{{_ "button_chat" [first-name] [last-name] }}</button>
-                                        {{/with}} 
-                                    {{/with}}
+                                {{#with getUser owner}}
+                                    <button id="chatWithUser" class="btn btn-default">{{_ "button.chat" profile.firstName profile.lastName }}</button>
+                                {{/with}}
                             {{/if}}
                         {{/if}}
 
@@ -120,19 +115,19 @@
                             {{#with checkSellerAccepted}}
                                 {{#if $eq $.Meteor.userId buyer}}
                                     {{#with getUser seller}}
-                                        <button class="cancelDeal btn btn-danger">{{_ "button_cancelDeal" profile.[first-name] profile.[last-name] }}</button>
-                                        <button class="btn btn-default">{{_ "button_chat" profile.[first-name] profile.[last-name] }}</button>
+                                        <button id="cancelDeal" class="btn btn-danger">{{_ "button.cancelDeal" profile.firstName profile.lastName }}</button>
+                                        <button id="chatWithUser" class="btn btn-default">{{_ "button.chat" profile.firstName profile.lastName }}</button>
                                     {{/with}}
                                 {{/if}}
                                 {{#if $eq $.Meteor.userId seller}}
                                     {{#with getUser buyer}}
-                                        <button class="cancelDeal btn btn-danger">{{_ "button_cancelDeal" profile.[first-name] profile.[last-name] }}</button>
-                                        <button class="btn btn-default">{{_ "button_chat" profile.[first-name] profile.[last-name] }}</button>
+                                        <button id="cancelDeal" class="btn btn-danger">{{_ "button.cancelDeal" profile.firstName profile.lastName }}</button>
+                                        <button id="setPublicationSold" class="btn btn-success">{{_ "button.setPublicationSold"}}</button>
+                                        <button id="chatWithUser" class="btn btn-default">{{_ "button.chat" profile.firstName profile.lastName }}</button>
                                     {{/with}}
                                 {{/if}}
                             {{/with}}
                         {{/if}}
-
                     {{/if}}
 
                 </div>

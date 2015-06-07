@@ -1,132 +1,117 @@
-Meteor.subscribe('notifications');
-Meteor.subscribe('bargains');
-Meteor.subscribe('users_profiles');
-
-Meteor.startup(function() {
-    TAPi18n.setLanguage("en");
-});
-
-accountsUIBootstrap3.setLanguage(TAPi18n.getLanguage());
-
 /*****************************************************************************/
 /* MasterLayout: Event Handlers */
 /*****************************************************************************/
 Template.MasterLayout.events({
-    'click .confirmDeal': function() {
-        Meteor.call('confirmDeal', this._id);
-    },
-    'click .rejectDeal': function() {
-        Meteor.call('rejectDeal', this._id);
-    },
-    'click .confirmBargain': function() {
-        Meteor.call('confirmBargain', this._id);
-    },
-    'click .keepBargaining': function() {
 
-        var bargain = Bargains.findOne({
-            _id: this.bargain
+    'submit #search': function(event) {
+
+        event.preventDefault();
+
+        var listOptions, value, userIds;
+
+
+        listOptions = Session.get('listOptions');
+
+        //Search value
+        value = $('[name=search]').val();
+
+        if (value.toLowerCase().startsWith('userid:') && value.split(':').length === 2) {
+
+            delete listOptions.filters.$or;
+
+            listOptions.filters.owner = value.split(':')[1].trim();
+
+        } else {
+
+            delete listOptions.filters.owner;
+
+            value = '.*' + common.escapeRegExp(value) + '.*';
+
+            //Searching value in users names
+            userIds = _.pluck(
+                Meteor.users.find({
+                    $or: [{
+                        'profile.firstName': {
+                            $regex: value,
+                            $options: 'i'
+                        }
+                    }, {
+                        'profile.lastName': {
+                            $regex: value,
+                            $options: 'i'
+                        }
+                    }]
+                }, {
+                    fields: {
+                        _id: 1
+                    }
+                }).fetch(), '_id');
+
+
+            //Adding found users, name and description to the filter
+            listOptions.filters['$or'] = [{
+                name: {
+                    $regex: value,
+                    $options: 'i'
+                }
+            }, {
+                owner: {
+                    $in: userIds
+                }
+            }, {
+                description: {
+                    $regex: value,
+                    $options: 'i'
+                }
+            }];
+        }
+
+
+        Session.set('listOptions', listOptions);
+
+        if (Router.current().route.getName() === 'home') {
+            PublicationsPagination.set(Session.get('listOptions'));
+        } else {
+            Router.go('home');
+        }
+
+    },
+    'click #login-buttons-edit-profile': function() {
+        Router.go('show_profile', {
+            _id: Meteor.userId()
         });
-
-        common.showBargainWindow('keepBargaining', this._id, bargain.buyerPrice, bargain.sellerPrice);
-    },
-    'click .stopBargaining': function() {
-        
-        Meteor.call('stopBargaining', this._id);
-    },
-    'click .closeNotification': function() {
-        Meteor.call('closeNotification', this._id);
     }
 });
 
 /*****************************************************************************/
-/* MasterLayout: Helpers */
+/* MasterLayout: Lifecycle Hooks */
 /*****************************************************************************/
-Template.MasterLayout.helpers({
-    notificationsCount: function() {
-        return Notifications.find().count();
-    },
-    notifications: function() {
-        return Notifications.find();
-    },
-    notificationMessage: function() {
+Template.MasterLayout.onCreated(function() {
 
-        return {
-            textKey: this.textKey,
-            from: Meteor.users.findOne({
-                _id: this.from
-            }),
-            price: this.price
-        }
-    },
-    notificationColor: function() {
+    if (!Session.get('listOptions')) {
 
-        switch (this.textKey) {
-            case 'notification_accepted':
-            case 'notification_confirmed':
-                return 'success';
+        Session.set('listOptions', {
+            sort: {
+                createdAt: -1
+            },
+            filters: {
 
-            case 'notification_rejected':
-            case 'notification_cancelled':
-            case 'notification_stopBargaining':
-            case 'notification_publicationRemoved':
-                return 'danger';
-                
-            case 'notification_bargained':
-                return 'warning';
-
-            default:
-                return 'info';
-        }
-    },
-    checkBargainPrice: function() {
-        
-        var bargainObj = Bargains.findOne({
-            _id: this.bargain
+            }
         });
 
-        return (bargainObj.sellerPrice - bargainObj.buyerPrice).toFixed(2) <= 0.01;
-
     }
+
 });
 
 
 
-//Ocultar el botón de cambiar contraseña
+
+//Close the notifications dropdown when the login dropdown is clicked
 Template._loginButtonsAdditionalLoggedInDropdownActions.onRendered(function() {
-    $("#login-buttons-open-change-password").hide();
-});
 
-
-//Configuración de la interfaz de login
-Accounts.ui.config({
-    requestPermissions: {},
-    extraSignupFields: [{
-        fieldName: 'first-name',
-        fieldLabel: TAPi18n.__('firstName'),
-        inputType: 'text',
-        visible: true,
-        saveToProfile: true,
-        validate: function(value, errorFunction) {
-
-            if (!value) {
-                errorFunction("First name is required");
-            }
-
-            return !!value;
+    $("#login-dropdown-list").on('click', function() {
+        if($("#notifications").hasClass('open')){
+            $("#notifications a").dropdown('toggle');            
         }
-    }, {
-        fieldName: 'last-name',
-        fieldLabel: TAPi18n.__('lastName'),
-        inputType: 'text',
-        visible: true,
-        saveToProfile: true,
-        validate: function(value, errorFunction) {
-
-            if (!value) {
-                errorFunction("Last name is required");
-            }
-
-            return !!value;
-        }
-    }]
+    });
 });

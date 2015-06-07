@@ -8,5 +8,8 @@
            data-icon="false"
            class="filestyle" />
 
-    {{> afFieldInput name=name type="hidden"}}
+
+    {{#if schema}}
+        {{> afFieldInput id="schemaField" name=name type="hidden"}}
+    {{/if}}
 </template>

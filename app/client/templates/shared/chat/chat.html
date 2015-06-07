@@ -1,0 +1,90 @@
+<template name="Chat">
+
+    {{#if conversationsCount}}
+
+        <div class="navbar-fixed-bottom col-md-4 col-lg-4 col-md-offset-8 col-lg-8">
+
+            <div class="panel-group row" id="chats" role="tablist" aria-multiselectable="true">
+                {{#each $mapped conversations}}
+                    <div class="chatElement panel panel-primary">
+                        <div class="panel-heading clearfix" role="tab" id="heading{{$index}}">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#chats" href="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}" class="accordionCollapse">
+                                    {{_ "chat.chatingWith"}}    
+                                    {{#each participants}}
+                                        {{#unless $eq user $.Meteor.userId}}
+                                            {{#with getUser user}}
+                                                {{profile.firstName}} {{profile.lastName}}
+                                            {{/with}}
+                                        {{/unless}}
+                                    {{/each}}
+                                </a>
+                                <button type="button" id="closeChat" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </h4>
+                        </div>
+                        <div id="collapse{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-expanded="false" aria-labelledby="heading{{$index}}">
+                            
+                                {{#if getLength messages}}
+                                    <div class="chatBox panel-body pre-scrollable" style="max-height: 150px;">
+                                        {{#each messages}}
+                                            {{> ChatMessage}}
+                                        {{/each}}
+                                    </div>
+                                {{/if}}
+                                <div class="panel-footer">
+                                    <form  class="sendMessage">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" 
+                                            placeholder="{{_ 'chat.sendMessage'}}" name="message"/>
+                                            <span class="input-group-btn">
+                                                <button type="submit" class="btn btn-info">
+                                                    <span class="glyphicon glyphicon-share-alt"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+
+            <div class="row">
+                <button id="toggleChats" class=" btn btn-primary pull-right">
+                    <span class="glyphicon glyphicon-collapse-down"></span>
+                    <span>  &nbsp;&nbsp;{{_ "button.chats"}}&nbsp;&nbsp;</span>
+                    <span class="badge">{{conversationsCount}}</span>
+                </button>
+            </div>
+
+        </div>
+
+    {{/if}}
+</template>
+
+<template name="ChatMessage">
+    
+    <div class="modal-header"  data-user="{{user}}">
+        <div class="text-info">
+            {{#if $eq user $.Meteor.userId }}
+                {{_ "chat.me"}}
+            {{else}}
+                {{#with getUser user}}
+                    <a href="/profile/{{_id}}">
+                            {{profile.firstName}} {{profile.lastName}}
+                    </a>
+                {{/with}}
+            {{/if}}
+        </div>
+        <div class="panel panel-info no-margin">
+            <div class="panel-body">
+                <p class="text-default text-justify break-word no-margin">
+                    {{message}}
+                </p>
+            </div>
+        </div>
+        <h5 class="text-muted text-right">
+            <small>{{prettifyDate date 'L HH:mm:ss'}}</small>
+        </h5>
+    </div>
+</template>

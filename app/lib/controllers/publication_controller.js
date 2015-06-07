@@ -1,76 +1,40 @@
 PublicationController = RouteController.extend({
     subscriptions: function() {
-        
+
+        TAPi18n.subscribe("categories");
+        TAPi18n.subscribe("ages");
+        Meteor.subscribe("images_publications");
     },
 
     data: function() {
-        
+
     },
 
     create: function() {
-
-        if (!Meteor.userId()) {
-            Router.go('home');
-        }
-        
         this.render('CreatePublication');
     },
 
     show: function() {
 
-        var publication;
+        var publication = Publications.findOne({
+            _id: new Mongo.ObjectID(this.params._id)
+        });
 
-        try {
-
-            publication = Publications.findOne({
-                _id: new Mongo.ObjectID(this.params._id)
-            });
-
-            if (publication) {
-                this.render('Publication', {
-                    data: publication
-                });
-            }
-
-        } catch (e) {
-            
-            console.log("Publication doesn't exists");
-
-        } finally {
-
-            if(!publication){
-                Router.go('home');
-            }
-        }
+        this.render('Publication', {
+            data: publication
+        });
 
     },
 
     edit: function() {
-        
-        var publication;
 
-        try {
+        var publication = Publications.findOne({
+            _id: new Mongo.ObjectID(this.params._id)
+        });
 
-            publication = Publications.findOne({
-                _id: new Mongo.ObjectID(this.params._id)
-            });
-
-            if (publication) {
-                this.render('EditPublication', {
-                    data: publication
-                });
-            }
-
-        } catch (e) {
-            
-            console.log("Publication doesn't exists");
-
-        } finally {
-
-            if(!publication){
-                Router.go('home');
-            }
-        }
+        this.render('EditPublication', {
+            data: publication
+        });
 
     }
 });

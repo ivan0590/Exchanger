@@ -1,59 +1,102 @@
 {
-    "search": "Buscar",
-    "publish": "Publicar",
-    "notifications": "Notificaciones",
-    "editProfile": "Editar perfil",
-    "firstName": "Nombre",
-    "lastName": "Apellidos",
+    "momentjs": {
+        "longDateFormat": {
+            "LT": "HH:mm",
+            "LTS": "HH:mm:ss",
+            "L": "DD/MM/YYYY",
+            "LL": "D MMMM YYYY",
+            "LLL": "D MMMM YYYY LT",
+            "LLLL": "dddd D MMMM YYYY LT"
+        }
+    },
 
-    "filter": "Filtro",
-    "orderBy": "Ordenar por",
-    "ascending": "Ascendentemente",
-    "descending": "Descendentemente",
+    "noImage": "SIN IMAGEN",
+    "date": "Fecha",    
 
-    "notification_accepted": "%s %s  ha aceptado el precio de tu producto",
-    "notification_confirmed": "%s %s  ha confirmado la venta de un producto",
-    "notification_rejected": "%s %s  ha rechazado la venta de un producto",
-    "notification_cancelled": "%s %s  ha cancelado un trato",
-    "notification_bargained": "%s %s  te ofrece %s€ por tu producto",
-    "notification_stopBargaining": "%s %s ha dejado de regatear sobre el producto",
-    "notification_publicationRemoved": "%s %s ha eliminado la publicación",
+    "master_layout": {
+        "search": "Buscar publicaciones",
+        "publish": "Publicar",
+        "notifications": "Notificaciones"
+    },
 
-    "title_createPublication": "Publicar un nuevo producto",
-    "title_editPublication": "Editar una publicación",
+    "title": {
+        "createPublication": "Publicar un nuevo producto",
+        "editPublication": "Editar una publicación",
+        "profile": "Perfil de %s %s",
+        "editProfile": "Editar mi perfil"
+    },
 
-    "name": "Nombre",
-    "description": "Descripción",
-    "status": "Estado",
-    "category": "Categoría",
-    "age": "Antigüedad",
-    "price": "Precio",
-    "photo": "Foto",
-    "date": "Fecha",
-    "seller": "Vendedor",
+    "notification": {
+        "accepted": "%s %s  ha aceptado el precio de tu producto",
+        "confirmed": "%s %s  ha confirmado la venta de un producto",
+        "rejected": "%s %s  ha rechazado la venta de un producto",
+        "cancelled": "%s %s  ha cancelado un trato",
+        "bargained": "%s %s  te ofrece %s€ por tu producto",
+        "stopBargaining": "%s %s ha dejado de regatear sobre el producto",
+        "publicationRemoved": "%s %s ha eliminado la publicación",
+        "sold": "%s %s ha marcado el producto como vendido"
+    },
 
-    "message_waitingForAcceptResponse": "Publicación aceptada, esperando respuesta del vendedor.",
-    "message_waitingForBargainResponse": "En proceso de regateo.",
+    "button": {
+        "myProfile": "Mi perfil",
+        "editProfile": "Editar perfil",
+        "confirm": "Confirmar",
+        "reject": "Rechazar",
+        "keepBargaining": "Seguir regateando",
+        "stopBargaining": "Parar de regatear",
+        "close": "Cerrar",
+        "chat": "Chatear con %s %s",
+        "cancelDeal": "Cancelar trato con %s %s",
+        "acceptPublication": "Aceptar precio",
+        "bargainPublication": "Regatear",
+        "createPublication": "Crear publicación",
+        "editPublication": "Editar publicación",
+        "removePublication": "Borrar publicación",
+        "chats": "Chats",
+        "userPublications": "Ver publicaciones",
+        "setPublicationSold": "Marcar como vendido"
+    },
 
-    "status_onSale": "En venta",
-    "status_waiting": "En espera de ser vendido",
-    "status_sold": "Vendido",
+    "publication": {
+        "seller": "Vendedor"
+    },
 
-    "button_confirm": "Confirmar",
-    "button_reject": "Rechazar",
-    "button_keepBargaining": "Seguir regateando",
-    "button_stopBargaining": "Parar de regatear",
-    "button_close": "Cerrar",
-    "button_chat": "Chatear con %s %s",
-    "button_cancelDeal": "Cancelar trato con %s %s",
-    "button_acceptPublication": "Aceptar precio",
-    "button_bargainPublication": "Regatear",
-    "button_createPublication": "Crear publicación",
-    "button_editPublication": "Editar publicación",
-    "button_removePublication": "Borrar publicación",
+    "profile": {
+        "email": "Email",
+        "statistics": "Estadísticas de producto",
+        "publications": "Publicados",   
+        "bought": "Comprados"
+    },
 
-    "modal_removePublication": "¿De verdad deseas borrar esta publicación?",
-    "modal_bargainPublication": "Regatear el precio (entre __min__€ y __max__€)",
+    "chat": {
+        "sendMessage": "Enviar un mensaje",
+        "chatingWith": "Chateando con",
+        "me": "Yo"
+    },
+
+    "filter_sort": {
+        "filter": "Filtro",
+        "sort": "Orden",
+        "ascending": "Ordenar ascendentemente",
+        "descending": "Ordenar descendentemente"
+    },
+
+    "message": {
+        "waitingForAcceptResponse": "Publicación aceptada, esperando respuesta del vendedor.",
+        "waitingForBargainResponse": "En proceso de regateo.",
+        "noResults": "No se encontraron publicaciones"
+    },
+
+    "status": {
+        "onSale": "En venta",
+        "waiting": "En espera de ser vendido",
+        "sold": "Vendido"
+    },
+
+    "modal": {
+        "removePublication": "¿De verdad deseas borrar esta publicación?",
+        "bargainPublication": "Regatear el precio (entre __min__€ y __max__€)"
+    },
 
     "schemas": {
 
@@ -86,6 +129,32 @@
             "photo": {
                 "label": "Foto",
                 "placeholder": "Foto"
+            }
+        },
+
+        "users": {
+            "profile": {
+
+                "firstName": {
+                    "label": "Nombre",
+                    "placeholder": "Nombre"
+                },
+                "lastName": {
+                    "label": "Apellidos",
+                    "placeholder": "Apellidos"
+                },
+                "birthdate": {
+                    "label": "Fecha de nacimiento",
+                    "placeholder": "Fecha de nacimiento"
+                },
+                "location": {
+                    "label": "Ubicación",
+                    "placeholder": "Ubicación"
+                },
+                "avatar": {
+                    "label": "Avatar",
+                    "placeholder": "Avatar"
+                }
             }
         }
     },

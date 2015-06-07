@@ -6,7 +6,7 @@ Template.Publication.events({
 
         var id = this._id;
 
-        bootbox.confirm(TAPi18n.__('modal_removePublication'), function(confirm) {
+        bootbox.confirm(TAPi18n.__('modal.removePublication'), function(confirm) {
 
             if(confirm){
                 Meteor.call('removePublication', id);
@@ -23,9 +23,17 @@ Template.Publication.events({
         
         common.showBargainWindow('bargainPublication',this._id, 0, this.price);
     },
-    'click .cancelDeal': function() {
+    'click #cancelDeal': function() {
 
         Meteor.call('cancelDeal', Template.currentData()._id);
+    },
+    'click #setPublicationSold': function() {
+
+        Meteor.call('setPublicationSold', Template.currentData()._id);
+    },
+    'click #chatWithUser': function() {
+        
+        Meteor.call('chatWithUser', this._id);
     }
 });
 
@@ -71,27 +79,12 @@ Template.Publication.helpers({
 
         switch (this.status) {
             case 0:
-                return TAPi18n.__('status_onSale');
+                return TAPi18n.__('status.onSale');
             case 1:
-                return TAPi18n.__('status_waiting');
+                return TAPi18n.__('status.waiting');
             case 2:
-                return TAPi18n.__('status_sold');
+                return TAPi18n.__('status.sold');
         }
 
     }
-});
-
-/*****************************************************************************/
-/* Publication: Lifecycle Hooks */
-/*****************************************************************************/
-Template.Publication.onCreated(function() {
-
-});
-
-Template.Publication.onRendered(function() {
-
-});
-
-Template.Publication.onDestroyed(function() {
-
 });

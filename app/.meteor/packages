@@ -15,9 +15,6 @@ cfs:filesystem
 cfs:ejson-file
 twbs:bootstrap
 aldeed:collection2
-aldeed:autoform
-gwendall:autoform-i18n
-gwendall:simple-schema-i18n
 iamkevingreen:imagesloaded
 isotope:isotope
 dburles:mongo-collection-instances
@@ -25,3 +22,9 @@ alethes:pages
 mizzao:bootboxjs
 meteorhacks:subs-manager
 raix:handlebar-helpers
+momentjs:moment
+gwendall:simple-schema-i18n
+gwendall:autoform-i18n
+aldeed:autoform
+tap:i18n-ui
+linto:jquery-ui

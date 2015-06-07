@@ -1,0 +1,54 @@
+<template name="Notifications">
+	{{#if notificationsCount}}
+        <li  id="notifications" class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-bell"></span>
+                &nbsp;&nbsp;{{_ "master_layout.notifications"}}&nbsp;&nbsp;
+                
+                <span class="badge">{{notificationsCount}}</span>
+            </a>
+            <div class="dropdown-menu panel-body" style="width: 250%;">
+                <ul class="list-group list-unstyled">
+                {{#each notifications}}
+                    <li class="clearfix">
+                        <div class="panel clearfix">
+                            <div class="list-group-item list-group-item-{{notificationColor}}">
+                                <p class="list-group-item-heading">
+                                    {{#with notificationMessage}}
+                                        {{_ textKey from.profile.firstName from.profile.lastName price}}:
+                                    {{/with}}
+                                    {{#with getPublication publication}}
+                                        <a href="/publication/{{_id._str}}">
+                                            <h4><span class="label label-default">{{name}}</span></h4>
+                                        </a>
+                                    {{else}}
+                                        <h4><span class="label label-default">{{publication}}</span></h4>
+                                    {{/with}}
+                                </p>
+                            </div>
+                            <div class="pull-right btn-group-sm ">
+                                {{#if needsConfirmation}}
+                                    {{#if $eq type "deal"}}
+                                        <button class="confirmDeal btn btn-success">{{_ "button.confirm"}}</button>
+                                        <button class="rejectDeal  btn btn-danger">{{_ "button.reject"}}</button>
+                                    {{else}}
+                                        {{#if $eq type "bargain"}}
+                                            <button class="confirmBargain btn btn-success">{{_ "button.confirm"}}</button>
+                                            {{#unless checkBargainPrice}}
+                                                <button class="keepBargaining btn btn-warning">{{_ "button.keepBargaining"}}</button>
+                                            {{/unless}}
+                                            <button class="stopBargaining btn btn-danger">{{_ "button.stopBargaining"}}</button>
+                                        {{/if}}
+                                    {{/if}}
+                                {{else}}
+                                    <button class="closeNotification btn btn-sm btn-default">{{_ "button.close"}}</button>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </li>
+                {{/each}}
+                </ul>
+            </div>
+        </li>
+    {{/if}}
+</template>

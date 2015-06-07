@@ -1,45 +1,54 @@
-Meteor.publish('users_profiles', function(){
-    return Meteor.users.find({}, {fields: {profile: 1}});
+var normalPublish = {
+    users_profiles: function(){
+        return Meteor.users.find({}, {fields: {profile: 1}});
+    },
+    user: function(id){
+        return Meteor.users.find({_id: id}, {fields: {emails: 1,profile: 1}});
+    },
+    images_publications: function(){
+        return ImagesPublications.find();
+    },
+    images_profiles: function(){
+        return ImagesProfiles.find();
+    },
+    publications: function(){
+        return Publications.find();
+    },
+    publication: function(id){
+        check(id, Mongo.ObjectID);
+        return Publications.find({_id: id});
+    },
+    bargains: function() {
+        return Bargains.find({$or: [{buyer: this.userId},{seller: this.userId}]});
+    },
+    deals: function() {
+        return Deals.find({$or: [{buyer: this.userId},{seller: this.userId}]});
+    },
+    deal: function(publicationId) {
+        check(publicationId, Mongo.ObjectID);
+        return Deals.find({publication: publicationId, $or: [{buyer: this.userId},{seller: this.userId}]});
+    },
+    notifications: function() {
+        return Notifications.find({to: this.userId});
+    },
+    conversations: function() {
+        return Conversations.find({participants: {$in: [{user: this.userId, active: true}]}});
+    }
+};
+
+var i18nPublish = {
+    categories: function () {
+        return Categories.i18nFind();
+    },
+    ages: function () {
+        return Ages.i18nFind();
+    }
+};
+
+_.each(normalPublish, function(element, index) {
+    Meteor.publish(index, element);
 });
 
-Meteor.publish('images_publications', function(){
-    return ImagesPublications.find();
-});
-
-TAPi18n.publish("categories", function () {
-    return Categories.i18nFind();
-});
-
-TAPi18n.publish("ages", function () {
-    return Ages.i18nFind();
-});
-
-
-Meteor.publish('publications', function(){
-    return Publications.find();
-});
-
-Meteor.publish('publication', function(id){
-    return Publications.find({_id: id});
-});
-
-
-
-Meteor.publish('bargains', function() {
-    return Bargains.find({$or: [{buyer: this.userId},{seller: this.userId}]});
-});
-
-
-Meteor.publish('deals', function() {
-    return Deals.find({$or: [{buyer: this.userId},{seller: this.userId}]});
-});
-
-Meteor.publish('deal', function(publicationId) {
-    return Deals.find({publication: publicationId, $or: [{buyer: this.userId},{seller: this.userId}]});
-});
-
-
-
-Meteor.publish('notifications', function() {
-    return Notifications.find({to: this.userId});
+_.each(i18nPublish, function(element, index) {
+    TAPi18n.publish(index, element);
 });

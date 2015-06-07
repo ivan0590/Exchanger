@@ -1,59 +1,102 @@
 {
-    "search": "Search",
-    "publish": "Publish",
-    "notifications": "Notifications",
-    "editProfile": "Edit profile",
-    "firstName": "First Name",
-    "lastName": "Last Name",
+    "momentjs": {
+        "longDateFormat": {
+            "LT": "HH:mm",
+            "LTS": "HH:mm:ss",
+            "L": "YYYY-MM-DD",
+            "LL": "YYYY MMMM D",
+            "LLL": "YYYY MMMM D LT",
+            "LLLL": "dddd YYYY MMMM D LT"
+        }
+    },
 
-    "filter": "Filter",
-    "orderBy": "Order by",
-    "ascending": "Ascending",
-    "descending": "Descending",
-
-    "notification_accepted": "%s %s has accepted the price of your product",
-    "notification_confirmed": "%s %s  has confirmed the sell of a product",
-    "notification_rejected": "%s %s  has rejected the sell of a product",
-    "notification_cancelled": "%s %s  has cancelled a deal",
-    "notification_bargained": "%s %s  offers you %s€ for your product",
-    "notification_stopBargaining": "%s %s has stopped bargaining over the product",
-    "notification_publicationRemoved": "%s %s has removed the publication",
-
-    "title_createPublication": "Publish new product",
-    "title_editPublication": "Edit a publicación",
-
-    "name": "Name",
-    "description": "Description",
-    "status": "Status",
-    "category": "Category",
-    "age": "Age",
-    "price": "Price",
-    "photo": "Photo",
+    "noImage": "NO IMAGE",
     "date": "Date",
-    "seller": "Seller",
+    
+    "master_layout": {
+        "search": "Search for publications",
+        "publish": "Publish",
+        "notifications": "Notifications"
+    },
 
-    "message_waitingForAcceptResponse": "Publication accepted, waiting seller's response.",
-    "message_waitingForBargainResponse": "In bargain process.",
+    "title": {
+        "createPublication": "Publish new product",
+        "editPublication": "Edit a publicación",
+        "profile": "%s %s Profile",
+        "editProfile": "Edit my profile"
+    },
 
-    "status_onSale": "On sale",
-    "status_waiting": "Waiting to be sold",
-    "status_sold": "Sold",
+    "notification": {
+        "accepted": "%s %s has accepted the price of your product",
+        "confirmed": "%s %s  has confirmed the sell of a product",
+        "rejected": "%s %s  has rejected the sell of a product",
+        "cancelled": "%s %s  has cancelled a deal",
+        "bargained": "%s %s  offers you %s€ for your product",
+        "stopBargaining": "%s %s has stopped bargaining over the product",
+        "publicationRemoved": "%s %s has removed the publication",
+        "sold": "%s %s has marked the product as sold"
+    },
 
-    "button_confirm": "Confirm",
-    "button_reject": "Reject",
-    "button_keepBargaining": "Keep bargaining",
-    "button_stopBargaining": "Stop bargaining",
-    "button_close": "Close",
-    "button_chat": "Chat with %s %s",
-    "button_cancelDeal": "Cancel deal with %s %s",
-    "button_acceptPublication": "Accept price",
-    "button_bargainPublication": "Bargain",
-    "button_createPublication": "Create publication",
-    "button_editPublication": "Edit publication",
-    "button_removePublication": "Remove publication",
+    "button": {
+        "myProfile": "My profile",
+        "editProfile": "Edit profile",
+        "confirm": "Confirm",
+        "reject": "Reject",
+        "keepBargaining": "Keep bargaining",
+        "stopBargaining": "Stop bargaining",
+        "close": "Close",
+        "chat": "Chat with %s %s",
+        "cancelDeal": "Cancel deal with %s %s",
+        "acceptPublication": "Accept price",
+        "bargainPublication": "Bargain",
+        "createPublication": "Create publication",
+        "editPublication": "Edit publication",
+        "removePublication": "Remove publication",
+        "chats": "Chats",
+        "userPublications": "See publications",
+        "setPublicationSold": "Mark as sold"
+    },
 
-    "modal_removePublication": "Do you really want to remove this publication?",
-    "modal_bargainPublication": "Bargain the price (between __min__€ and  __max__€)",
+    "publication": {
+        "seller": "Seller"
+    },
+
+    "profile": {
+        "email": "Email",
+        "statistics": "Product statistics",
+        "publications": "Published",
+        "bought": "Bought"
+    },
+
+    "chat": {
+        "sendMessage": "Send a message",
+        "chatingWith": "Chating with",
+        "me": "Me"
+    },
+
+    "filter_sort": {
+        "filter": "Filter",
+        "sort": "Sort",
+        "ascending": "Sort ascending",
+        "descending": "Sort descending"
+    },
+
+    "message": {
+        "waitingForAcceptResponse": "Publication accepted, waiting seller's response.",
+        "waitingForBargainResponse": "In bargain process.",
+        "noResults": "No publications were found"
+    },
+
+    "status": {
+        "onSale": "On sale",
+        "waiting": "Waiting to be sold",
+        "sold": "Sold"
+    },
+
+    "modal": {
+        "removePublication": "Do you really want to remove this publication?",
+        "bargainPublication": "Bargain the price (between __min__€ and  __max__€)"
+    },
 
     "schemas": {
 
@@ -86,6 +129,32 @@
             "photo": {
                 "label": "Photo",
                 "placeholder": "Photo"
+            }
+        },
+
+        "users": {
+            "profile": {
+
+                "firstName": {
+                    "label": "First name",
+                    "placeholder": "First name"
+                },
+                "lastName": {
+                    "label": "Last name",
+                    "placeholder": "Last name"
+                },
+                "birthdate": {
+                    "label": "Birthdate",
+                    "placeholder": "Birthdate"
+                },
+                "location": {
+                    "label": "Location",
+                    "placeholder": "Location"
+                },
+                "avatar": {
+                    "label": "Avatar",
+                    "placeholder": "Avatar"
+                }
             }
         }
     }

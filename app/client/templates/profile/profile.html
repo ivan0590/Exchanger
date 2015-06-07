@@ -1,0 +1,70 @@
+<template name="Profile">
+    <div class="col-md-12 col-lg-12">
+        <div class="well clearfix">
+            <legend>
+                <a href="/" class="col-md-1 col-lg-1 row">
+                    <button class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                </a>
+                <span class="h2 text-center">
+                    {{_ "title.profile" profile.firstName profile.lastName}}
+                </span>
+
+                <span class="h2 pull-right">
+                    {{#if currentUser}}
+    	                {{#if $neq _id $.Meteor.userId }}
+    	                	<button id="chatWithUser" class="btn btn-default">{{_ "button.chat" profile.firstName profile.lastName }}</button>
+    	                {{else}}
+    	                	<a href="/profile/{{_id}}/edit"  class="btn btn-info">
+    	                		{{_ "button.editProfile"}}
+                            </a>
+                        {{/if}}
+	                {{/if}}
+                </span>
+            </legend>
+            <div class="col-md-5 col-lg-5">
+                <div class="col-md-12 col-lg-12 img-thumbnail">
+                    {{#if profile.avatar}}
+                        {{#with getProfilePhoto profile.avatar}}
+                    	   <img src="{{url store='images_profiles'}}" alt="{{_ 'noImage'}}" class="img-responsive img-circle center-block" />
+                        {{/with}}
+                    {{else}}
+                    	<img src="http://placehold.it/300x300&text={{_ 'noImage'}}" alt="{{_ 'noImage'}}" class="img-responsive img-circle center-block" />
+                	{{/if}}
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-7">
+                <div class="col-md-6 col-lg-6">
+                    <div class="col-md-12 col-lg-12">
+                        <h4><span class="label label-primary">{{_ "profile.email"}}</span></h4>
+                        <p class="col-md-12 col-lg-12">{{emails.[0].address}}</p>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                        {{#if profile.birthdate}}
+	                        <h4><span class="label label-primary">{{_ "schemas.users.profile.birthdate.label"}}</span></h4>
+	                        <p class="col-md-12 col-lg-12">{{prettifyDate profile.birthdate 'L'}}</p>
+                        {{/if}}
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                        {{#if profile.location}}
+	                        <h4><span class="label label-primary">{{_ "schemas.users.profile.location.label"}}</span></h4>
+	                        <p class="col-md-12 col-lg-12">{{profile.location}}</p>
+                        {{/if}}
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <h4><span class="label label-primary">{{_ "profile.statistics"}}</span></h4>
+                    <p class="col-md-12 col-lg-12">{{_ "profile.publications"}}: {{publications}}</p>
+                    <p class="col-md-12 col-lg-12">{{_ "status.onSale"}}: {{onSalePublications}}</p>
+                    <p class="col-md-12 col-lg-12">{{_ "status.waiting"}}: {{waitingPublications}}</p>
+                    <p class="col-md-12 col-lg-12">{{_ "status.sold"}}: {{soldPublications}}</p>
+                    <p class="col-md-12 col-lg-12">{{_ "profile.bought"}}: {{boughtSuccess}}</p>
+                </div>
+                <div class="col-md-12 col-lg-12">
+                    <button id="userPublications" class="btn btn-default">{{_ "button.userPublications"}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
