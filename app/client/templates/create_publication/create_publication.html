@@ -52,7 +52,7 @@
                     </div>
 
                     <div  class="form-group">
-                        {{> CustomUpload name="photo" buttonTextKey="photo" accept=".jpg, .jpeg, .png" collection="ImagesPublications" schema=true }}
+                        {{> CustomUpload name="photo" buttonTextKey="schemas.publications.photo.label" accept=".jpg, .jpeg, .png" collection="ImagesPublications" schema=true }}
                         {{#if afFieldIsInvalid name='photo'}}
                             <span class="help-block text-danger">
                                 {{{afFieldMessage name='photo'}}}

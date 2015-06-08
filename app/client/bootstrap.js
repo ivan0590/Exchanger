@@ -55,3 +55,15 @@ Accounts.ui.config({
         }
     }]
 });
+
+Template._loginButtonsAdditionalLoggedInDropdownActions.onRendered(function() {
+
+    $("#login-dropdown-list").addClass('text-center');
+
+    //Close the notifications dropdown when the login dropdown is clicked
+    $("#login-dropdown-list").on('click', function() {
+        if($("#notifications").hasClass('open')){
+            $("#notifications a").dropdown('toggle');            
+        }
+    });
+});

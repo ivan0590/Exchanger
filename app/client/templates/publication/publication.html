@@ -3,17 +3,17 @@
         <div class="well clearfix">
             
             <legend>                
-                <a href="/" class="col-md-1 col-lg-1 row">
+                <a href="/" class="col-xs-1 row">
                     <button class="btn btn-default">
                         <span class="glyphicon glyphicon-arrow-left"></span>
                     </button>
                 </a>
 
-                <span class="h2 text-center">
+                <span class="h2 text-center col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     {{name}}
                 </span>
                 
-                <span class="h2 pull-right">
+                <span class="h2 pull-right hidden-xs hidden-sm">
                     <span class="label label-primary">
                         {{#if $and checkSellerAccepted checkSellerBargained}}
                             {{#if $eq status 1}}
@@ -34,19 +34,43 @@
                     </span>
                 </span>
 
-                <span class="h2 pull-right">
+                <span class="h2 pull-right hidden-xs hidden-sm">
                     <span class=" label label-{{statusLabel}}">{{statusText}}</span>
                 </span>
             </legend>
             {{#with getPublicationPhoto photo}}
-                <div class="col-md-5 col-lg-5 img-thumbnail">
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 img-thumbnail">
                     <img src="{{url store='images_publications'}}" alt="{{_ 'noImage'}}" class="img-responsive center-block" />
                 </div>
             {{/with}}
 
-            <div class="col-md-7 col-lg-7">
-                
-                <div class="col-md-6 col-lg-6">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+
+                <div class="visible-xs visible-sm col-xs-12 clearfix">
+                    <div class="h2 text-center">
+                        <span class=" label label-{{statusLabel}}">{{statusText}}</span>
+                        <span class="label label-primary">
+                            {{#if $and checkSellerAccepted checkSellerBargained}}
+                                {{#if $eq status 1}}
+                                    {{#with checkSellerBargained}}
+                                        {{#if $eq turn "buyer"}}
+                                            {{sellerPrice}} €
+                                        {{else}}
+                                            {{buyerPrice}} €                                    
+                                        {{/if}}
+                                    {{/with}}
+                                    <del class="small">{{price}} €</del>
+                                {{else}}
+                                    {{price}} €
+                                {{/if}}
+                            {{else}}
+                                {{price}} €
+                            {{/if}}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-xs-6">
                     <h4><span class="label label-primary">{{_ "publication.seller"}}</span></h4>
                     {{#with getUser owner}}
                         <a href="/profile/{{_id}}" class="col-md-12 col-lg-12">
@@ -54,30 +78,30 @@
                         </a>
                     {{/with}}
                 </div>
-                <div class="col-md-6 col-lg-6">
+                <div class="col-xs-6">
                     <h4><span class="label label-primary">{{_ "date"}}</span></h4>
                     <p class="col-md-12 col-lg-12">{{prettifyDate createdAt 'L HH:mm:ss'}}</p>
                 </div>
 
-                <div class="col-md-6 col-lg-6">
+                <div class="col-xs-6">
                     <h4><span class="label label-primary">{{_ "schemas.publications.category.label"}}</span></h4>
                     {{#with getCategory category}}
                         <p class="col-md-12 col-lg-12">{{name}}</p>                        
                     {{/with}}
                 </div>
-                <div class="col-md-6 col-lg-6">
+                <div class="col-xs-6">
                     <h4><span class="label label-primary">{{_ "schemas.publications.age.label"}}</span></h4>
                     {{#with getAge age}}
                         <p class="col-md-12 col-lg-12">{{name}}</p>                        
                     {{/with}}
                 </div>
                 
-                <div class="col-md-12 col-lg-12">
+                <div class="col-xs-12">
                     <h4><span class="label label-primary">{{_ "schemas.publications.description.label"}}</span></h4>
                     <p class="col-md-12 col-lg-12">{{description}}</p>                        
                 </div>
 
-                <div class="col-md-12 col-lg-12">
+                <div class="col-xs-12">
                     
                     {{#if currentUser}}
 

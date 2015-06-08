@@ -2,16 +2,17 @@
     <div class="col-md-12 col-lg-12">
         <div class="well clearfix">
             <legend>
-                <a href="/" class="col-md-1 col-lg-1 row">
+                <a href="/" class="col-xs-1 row">
                     <button class="btn btn-default">
                         <span class="glyphicon glyphicon-arrow-left"></span>
                     </button>
                 </a>
-                <span class="h2 text-center">
+                &nbsp;
+                <span class="h2 text-center col-xs-12 col-sm-12 col-md-10 col-lg-10">
                     {{_ "title.profile" profile.firstName profile.lastName}}
                 </span>
 
-                <span class="h2 pull-right">
+                <span class="h2 pull-right hidden-xs hidden-sm">
                     {{#if currentUser}}
     	                {{#if $neq _id $.Meteor.userId }}
     	                	<button id="chatWithUser" class="btn btn-default">{{_ "button.chat" profile.firstName profile.lastName }}</button>
@@ -23,8 +24,8 @@
 	                {{/if}}
                 </span>
             </legend>
-            <div class="col-md-5 col-lg-5">
-                <div class="col-md-12 col-lg-12 img-thumbnail">
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <div class="col-xs-12 img-thumbnail">
                     {{#if profile.avatar}}
                         {{#with getProfilePhoto profile.avatar}}
                     	   <img src="{{url store='images_profiles'}}" alt="{{_ 'noImage'}}" class="img-responsive img-circle center-block" />
@@ -34,35 +35,47 @@
                 	{{/if}}
                 </div>
             </div>
-            <div class="col-md-7 col-lg-7">
-                <div class="col-md-6 col-lg-6">
-                    <div class="col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                <div class="col-xs-6">
+                    <div class="col-xs-12">
                         <h4><span class="label label-primary">{{_ "profile.email"}}</span></h4>
-                        <p class="col-md-12 col-lg-12">{{emails.[0].address}}</p>
+                        <p class="col-xs-12">{{emails.[0].address}}</p>
                     </div>
-                    <div class="col-md-12 col-lg-12">
+                    <div class="col-xs-12">
                         {{#if profile.birthdate}}
 	                        <h4><span class="label label-primary">{{_ "schemas.users.profile.birthdate.label"}}</span></h4>
-	                        <p class="col-md-12 col-lg-12">{{prettifyDate profile.birthdate 'L'}}</p>
+	                        <p class="col-xs-12">{{prettifyDate profile.birthdate 'L'}}</p>
                         {{/if}}
                     </div>
-                    <div class="col-md-12 col-lg-12">
+                    <div class="col-xs-12">
                         {{#if profile.location}}
 	                        <h4><span class="label label-primary">{{_ "schemas.users.profile.location.label"}}</span></h4>
-	                        <p class="col-md-12 col-lg-12">{{profile.location}}</p>
+	                        <p class="col-xs-12">{{profile.location}}</p>
                         {{/if}}
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6">
+                <div class="col-xs-6">
                     <h4><span class="label label-primary">{{_ "profile.statistics"}}</span></h4>
-                    <p class="col-md-12 col-lg-12">{{_ "profile.publications"}}: {{publications}}</p>
-                    <p class="col-md-12 col-lg-12">{{_ "status.onSale"}}: {{onSalePublications}}</p>
-                    <p class="col-md-12 col-lg-12">{{_ "status.waiting"}}: {{waitingPublications}}</p>
-                    <p class="col-md-12 col-lg-12">{{_ "status.sold"}}: {{soldPublications}}</p>
-                    <p class="col-md-12 col-lg-12">{{_ "profile.bought"}}: {{boughtSuccess}}</p>
+                    <p class="col-xs-12">{{_ "profile.publications"}}: {{publications}}</p>
+                    <p class="col-xs-12">{{_ "status.onSale"}}: {{onSalePublications}}</p>
+                    <p class="col-xs-12">{{_ "status.waiting"}}: {{waitingPublications}}</p>
+                    <p class="col-xs-12">{{_ "status.sold"}}: {{soldPublications}}</p>
+                    <p class="col-xs-12">{{_ "profile.bought"}}: {{boughtSuccess}}</p>
                 </div>
-                <div class="col-md-12 col-lg-12">
+                <div class="col-xs-12">
+                    
                     <button id="userPublications" class="btn btn-default">{{_ "button.userPublications"}}</button>
+                    <span class="visible-xs visible-sm col-xs-6 col-sm-6">
+                        {{#if currentUser}}
+                            {{#if $neq _id $.Meteor.userId }}
+                                <button id="chatWithUser" class="btn btn-default">{{_ "button.chat" profile.firstName profile.lastName }}</button>
+                            {{else}}
+                                <a href="/profile/{{_id}}/edit"  class="btn btn-info">
+                                    {{_ "button.editProfile"}}
+                                </a>
+                            {{/if}}
+                        {{/if}}
+                    </span>
                 </div>
             </div>
         </div>

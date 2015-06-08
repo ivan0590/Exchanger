@@ -10,7 +10,9 @@
         }
     },
 
+    "notFound": "Page not found",
     "noImage": "NO IMAGE",
+    "loading": "Loading...",
     "date": "Date",
     
     "master_layout": {

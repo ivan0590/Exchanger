@@ -102,16 +102,3 @@ Template.MasterLayout.onCreated(function() {
     }
 
 });
-
-
-
-
-//Close the notifications dropdown when the login dropdown is clicked
-Template._loginButtonsAdditionalLoggedInDropdownActions.onRendered(function() {
-
-    $("#login-dropdown-list").on('click', function() {
-        if($("#notifications").hasClass('open')){
-            $("#notifications a").dropdown('toggle');            
-        }
-    });
-});

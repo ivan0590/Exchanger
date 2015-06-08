@@ -1,0 +1,19 @@
+@media (max-width: 992px) {
+    #filterSort {
+		position: fixed !important;
+		top: 60px !important;
+		z-index: 99;
+	}
+
+    #filterSort > .panel {
+    	margin-top: 5px !important;
+    }
+}
+
+@media (min-width: 992px) {
+	#filterSort {
+		position: fixed !important;
+		top: 75px !important;
+	}
+}
+

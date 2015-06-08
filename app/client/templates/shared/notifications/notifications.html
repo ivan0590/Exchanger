@@ -1,13 +1,12 @@
 <template name="Notifications">
 	{{#if notificationsCount}}
-        <li  id="notifications" class="dropdown">
+        <li  id="notifications" class="dropdown text-center">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-bell"></span>
-                &nbsp;&nbsp;{{_ "master_layout.notifications"}}&nbsp;&nbsp;
-                
+                <span class="hidden-sm">&nbsp;&nbsp;{{_ "master_layout.notifications"}}&nbsp;&nbsp;</span>
                 <span class="badge">{{notificationsCount}}</span>
             </a>
-            <div class="dropdown-menu panel-body" style="width: 250%;">
+            <div class="dropdown-menu panel-body notificationsDropdown">
                 <ul class="list-group list-unstyled">
                 {{#each notifications}}
                     <li class="clearfix">

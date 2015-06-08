@@ -1,6 +1,6 @@
 <template name="PublicationsListItem">
 
-    <div class="ms-item col-md-4 col-lg-4">
+    <div class="ms-item col-xs-12 col-sm-4 col-md-4 col-lg-4">
          
         <div class="well clearfix">
             <h4 class="break-word">
@@ -11,30 +11,30 @@
 
             <a href="/publication/{{_id._str}}">
                 {{#with getPublicationPhoto photo}}
-                    <img src="{{url store='images_publications'}}" alt="{{_ 'noImage'}}" class="img-responsive img-thumbnail" />
+                    <img src="{{url store='images_publications'}}" alt="{{_ 'noImage'}}" class="col-xs-12 img-responsive img-thumbnail" />
                 {{/with}}
             </a>
 
             {{#with getCategory category}}
-                <h5 class="col-md-8 col-lg-8 break-word">
+                <h5 class="col-xs-8 break-word">
                     <a role="button" class="setCategory" data-id="{{_id._str}}">
                         {{name}}
                     </a>
                 </h5>
             {{/with}}
                 
-            <h4 class="col-md-4 col-lg-4 text-right"> {{price}} €</h4>
+            <h4 class="col-xs-4 text-right"> {{price}} €</h4>
 
             <div>
-                <div class="col-md-12 col-lg-12">
+                <div class="col-xs-12">
                     {{#with getUser owner}}
                         <a href="/profile/{{_id}}" class="break-word">
                             {{#if profile.avatar}}
                                 {{#with getProfilePhoto profile.avatar}}
-                                    <img src="{{url store='images_profiles'}}" alt="{{_ 'noImage'}}" class="col-md-5 col-lg-4 row img-responsive img-circle" />
+                                    <img src="{{url store='images_profiles'}}" alt="{{_ 'noImage'}}" class="col-xs-5 row img-responsive img-circle" />
                                 {{/with}}
                             {{/if}}
-                            <div class="col-md-7 col-lg-8">
+                            <div class="break-word">
                                 {{ profile.firstName }} {{ profile.lastName }}
                             </div>
                         </a>

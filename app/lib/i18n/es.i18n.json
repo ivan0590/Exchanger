@@ -10,6 +10,8 @@
         }
     },
 
+    "notFound": "Página no encontrada",
+    "loading": "Cargando...",
     "noImage": "SIN IMAGEN",
     "date": "Fecha",    
 

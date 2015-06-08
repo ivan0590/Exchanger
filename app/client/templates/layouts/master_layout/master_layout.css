@@ -1,0 +1,10 @@
+@media (min-width: 768px) and (max-width: 991px) {
+    #searchContainer,
+    #search {
+        padding: 0 !important;
+    }
+}
+
+body{
+	margin-top: 80px !important;
+}
