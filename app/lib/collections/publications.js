@@ -1,24 +1,25 @@
 Publications = new Meteor.Collection('publications');
 
-PublicationsPagination = new Meteor.Pagination(Publications, {
-    templateName: "PublicationsList",
-    itemTemplate: "PublicationsListItem",
-    divWrapper: false,
-    infinite: true,
-    infiniteTrigger: 0.8,
-    infiniteItemsLimit: Infinity,
-    dataMargin: 0,
-    paginationMargin: 0,
-    perPage: 21,
-    resetOnReload: true,
-    fastRender: false,
-    availableSettings: {
-        sort: true,
-        filters: true
-    }
-});
-
 Meteor.startup(function() {
+
+    PublicationsPagination = new Meteor.Pagination(Publications, {
+        templateName: "PublicationsList",
+        itemTemplate: "PublicationsListItem",
+        divWrapper: false,
+        infinite: true,
+        infiniteTrigger: 0.8,
+        infiniteItemsLimit: Infinity,
+        dataMargin: 0,
+        paginationMargin: 0,
+        perPage: 21,
+        resetOnReload: true,
+        fastRender: false,
+        availableSettings: {
+            sort: true,
+            filters: true
+        }
+    });
+
     PublicationsSchema = new SimpleSchema({
         _id: {
             type: Mongo.ObjectID,
@@ -56,6 +57,7 @@ Meteor.startup(function() {
             type: Number,
             optional: true,
             decimal: false,
+            allowedValues: [0, 1, 2],
             autoform: {
                 firstOption: TAPi18n.__('status')
             }

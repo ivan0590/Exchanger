@@ -46,14 +46,12 @@ Meteor.methods({
     },
 
     createPublication: function(publication) {
-
+        
         check(Meteor.userId(), checks.nonEmptyString);
         check(publication, Object);
 
         publication['status'] = 0;
         check(publication, PublicationsSchema);
-
-
 
         publication = _.extend(publication, {
             _id: new Mongo.ObjectID(),
@@ -61,7 +59,7 @@ Meteor.methods({
             owner: Meteor.userId()
         });
 
-        Publications.insert(publication);
+        Publications.insert(publication)
     },
 
     updatePublication: function(publication, id) {

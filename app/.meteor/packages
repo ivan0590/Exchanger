@@ -28,3 +28,5 @@ gwendall:autoform-i18n
 aldeed:autoform
 tap:i18n-ui
 linto:jquery-ui
+sanjo:jasmine
+velocity:html-reporter

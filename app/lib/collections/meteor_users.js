@@ -1,10 +1,10 @@
 Meteor.startup(function() {
 
     ProfilesSchema = new SimpleSchema({
-        'firstName': {
+        firstName: {
             type: String
         },
-        'lastName': {
+        lastName: {
             type: String
         },
         birthdate: {

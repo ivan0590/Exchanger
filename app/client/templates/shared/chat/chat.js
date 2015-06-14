@@ -54,9 +54,6 @@ Template.Chat.events({
         if (intervalId) {
             Meteor.clearInterval(intervalId);
             intervalId = undefined;
-            Meteor.setTimeout(function() {
-                $(event.currentTarget).show();
-            }, 600);
         }
     }
 });
@@ -87,7 +84,13 @@ Template.Chat.onRendered(function() {
 
     //Hide the other elements on chat collapse('show')
     $(document).on('shown.bs.collapse', '.chatElement', function(event) {
+
+        $(event.currentTarget).find('.chatBox').animate({
+            scrollTop: $(event.currentTarget).find('.chatBox').prop("scrollHeight")
+        }, 50);
+
         $('.chatElement').not($(event.currentTarget)).hide('blind', 300);
+
     });
 
     //Show the other elements on chat collapse('hide')
@@ -98,7 +101,7 @@ Template.Chat.onRendered(function() {
     //Visual efects for incoming messages
     function insertElementHook(node, next) {
 
-        $(node).insertAfter(next);
+        $(node).insertBefore(next);
 
         var message = $(node),
             chatBox = message.parent('.chatBox'),
@@ -106,25 +109,20 @@ Template.Chat.onRendered(function() {
 
         $('#chats').show();
 
-        if(chat.is(':hidden')){
-            chat.show('blind', 300);            
+        if (chat.is(':hidden')) {
+            chat.show('blind', 300);
         }
 
-        //Fade effect
+        //Effect
         if (!intervalId && message.data('user') !== Meteor.userId() && !chat.is(':focus')) {
 
             intervalId = Meteor.setInterval(function() {
-                chat.effect('fade', {
-                    times: 4
-                }, 500);
-            }, 500);
+                chat.effect('shake', {}, 750);
+            }, 750);
         }
 
-        chatBox.animate({
-            scrollTop: chatBox.prop("scrollHeight")
-        }, 50);
     }
-    
+
 
     Meteor.setTimeout(function() {
 
@@ -139,19 +137,15 @@ Template.Chat.onRendered(function() {
 
                 chat.insertAfter(next);
 
-                //Fade effect
+                //Effect
                 if (!intervalId && chatBox.children().last().data('user') !== Meteor.userId() && !chat.is(':focus')) {
 
                     intervalId = Meteor.setInterval(function() {
-                        chat.effect('fade', {
-                            times: 4
-                        }, 500);
-                    }, 500);
-                }
+                        chat.effect('shake', {
 
-                chatBox.animate({
-                    scrollTop: chatBox.prop("scrollHeight")
-                }, 50);
+                        }, 750);
+                    }, 750);
+                }
 
                 //Effects on new messages
                 chatBox[0]._uihooks = {
